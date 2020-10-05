@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Fri Oct  2 18:27:03 2020 (-0500)
+;; Last-Updated: Mon Oct  5 00:03:43 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 956
+;;     Update #: 959
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -414,51 +414,7 @@
 
 (load "~/.emacs.d/elisps/company_jedi_settings")
 
-;; .emacs ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ac-etags-requires 1)
- '(ansi-color-names-vector
-   ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
- '(blink-cursor-mode nil)
- '(column-number-mode t)
- '(custom-safe-themes
-   '("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "c29e00a62634efa10d45cf110f12574831b2599367f2169f553a338bac232fa3" "a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" "868f73b5cf78e72ca2402e1d48675e49cc9a9619c5544af7bf216515d22b58e7" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "71ecffba18621354a1be303687f33b84788e13f40141580fa81e7840752d31bf" default))
- '(display-time-mode t)
- '(fci-rule-color "#383838")
- '(font-use-system-font t)
- '(package-selected-packages
-   '(ein zenburn-theme zen-and-art-theme yaml-mode yafolding xterm-color xcscope writegood-mode whitespace-cleanup-mode which-key web-mode web-beautify w3m w32-browser volatile-highlights uuidgen twilight-theme telephone-line tangotango-theme srefactor spinner spacemacs-theme spaceline-all-the-icons solarized-theme sml-mode smex smart-mode-line-powerline-theme smart-mode-line-atom-one-dark-theme skewer-mode scala-mode rvm rtags-xref restclient restart-emacs request-deferred req-package rainbow-mode rainbow-delimiters pyenv-mode py-autopep8 popup-complete poly-R planet-theme pianobar php-mode paredit organic-green-theme org-journal org-ac openwith opencl-mode o-blog nyan-mode nodejs-repl nlinum multiple-cursors multi-term monokai-theme moe-theme micgoline matlab-mode markdown-preview-mode markdown-preview-eww markdown-mode+ magit-popup magit linum-relative lice latex-preview-pane latex-pretty-symbols latex-math-preview latex-extra julia-mode json-navigator json-mode jabber ivy-yasnippet ivy-todo ivy-prescient ivy-hydra irony-eldoc indent-guide imenu-anywhere htmlize hl-todo hl-indent highlight-operators highlight-numbers highlight-indent-guides highlight-doxygen highlight helm-rtags helm-jira header2 haskell-mode haml-mode graphviz-dot-mode graphql goto-chg google-translate golden-ratio go-mode gnuplot-mode gnuplot gitconfig-mode gist ghub format-all flyspell-lazy flyspell-correct-popup flyspell-correct-ivy flyparens flymake-json flymake-cursor flycheck-rtags flycheck-irony flx fill-column-indicator fic-mode feature-mode fancy-battery ess-smart-underscore ess-smart-equals ess-R-data-view enclose emojify emms elpy electric-case eldoc-eval el-get doom-themes doom-modeline dired-hacks-utils deft dash-functional cyberpunk-theme cuda-mode csv-mode csharp-mode crux counsel-tramp counsel-projectile company-tabnine company-rtags company-prescient company-math company-jedi company-irony-c-headers company-irony company-fuzzy company-emoji company-c-headers company-auctex company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow coffee-mode cmake-project cmake-ide cmake-font-lock clojure-mode clang-format ccls c-eldoc buffer-move base16-theme autopair auto-package-update auto-complete-exuberant-ctags auto-complete-clang auto-complete-c-headers auto-complete-auctex auto-compile auctex-latexmk anzu anti-zenburn-theme all-the-icons-ivy all-the-icons-gnus all-the-icons-dired airline-themes aggressive-indent aggressive-fill-paragraph afternoon-theme ac-slime ac-math ac-c-headers))
- '(safe-local-variable-values
-   '((eval pyvenv-activate "/ssh:mllab7:/home/ramesh/anaconda2/envs/pytorch")
-     (lice:default-license . "chrec")))
- '(send-mail-function 'smtpmail-send-it)
- '(show-paren-mode t)
- '(tool-bar-mode nil)
- '(vhdl-electric-mode t t)
- '(vhdl-model-alist
-   '(("Example Model" "<label> : process (<clock>, <reset>)
-begin  -- process <label>
-  if <reset> = '1' then  -- asynchronous reset (active high)
-    <cursor>
-  elsif <clock>'event and <clock> = '1' then  -- rising clock edge
-    if <enable> = '1' then  -- synchronous load
+;; config changes made through the customize UI will be stored here
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
-    end if;
-  end if;
-end process <label>;" "e" "")))
- '(vhdl-reset-active-high t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ivy-current-match ((((class color) (background light)) :background nil :foreground nil) (((class color) (background dark)) :background "DimGrey" :foreground nil)))
- '(ivy-highlight-face ((t (:background "red"))))
- '(swiper-minibuffer-match-face-1 ((t :background "#dddddd")))
- '(swiper-minibuffer-match-face-2 ((t :background "#bbbbbb" :weight bold)))
- '(swiper-minibuffer-match-face-3 ((t :background "#bbbbff" :weight bold)))
- '(swiper-minibuffer-match-face-4 ((t :background "#ffbbff" :weight bold))))
+;; .emacs ends here
