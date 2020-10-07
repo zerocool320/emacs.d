@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:48:31 2016 (-0400)
 ;; Version:
-;; Last-Updated: Mon May 18 14:06:22 2020 (-0500)
+;; Last-Updated: Wed Oct  7 12:18:23 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 8
+;;     Update #: 10
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -35,20 +35,6 @@
 (setq echo-keystrokes 0.1
       use-dialog-box nil
       visible-bell t)
-
-;; Spotify emacs client
-(global-set-key (kbd "s-p") #'spotify-playpause)
-(global-set-key (kbd "s-n") #'spotify-next)
-
-;; Volume control
-(global-set-key (kbd "s-,")     'emms-volume-lower)
-(global-set-key (kbd "s-.")     'emms-volume-raise)
-
-;; multiple cursors
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; key_bindings.el ends here

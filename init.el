@@ -6,13 +6,15 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Wed Oct  7 11:43:29 2020 (-0500)
+;; Last-Updated: Wed Oct  7 12:29:43 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1004
+;;     Update #: 1019
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
+
+;; Inspired from https://github.com/bbatsov/emacs.d/blob/master/init.el
 
 ;; TODO: Organize contents
 
@@ -107,26 +109,13 @@
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
-;;autopair-mode
-(require 'autopair)
-(autopair-global-mode)
-
 ;;Power lisp
 (load "~/.emacs.d/elisps/power_lisp")
 
 (load "~/.emacs.d/elisps/ac_misc")
 
-;; buffer cleanup
-;; (load "~/.emacs.d/elisps/buffer_cleanup")
-
 ;;flyspell
 (load "~/.emacs.d/elisps/flyspell_options")
-
-;;Language Hooks
-;; (load "~/.emacs.d/elisps/lang_hooks")
-
-;;Locate Makefile in nearest directory and compile
-(load "~/.emacs.d/elisps/make_options")
 
 ;; Doxygen for emacs ;; copy doxymacs folder from site-lisp after brew install
 (add-to-list 'load-path "~/.emacs.d/doxymacs/")
@@ -173,18 +162,17 @@
 (setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
 (setq-default tab-width 3)            ;; but maintain correct appearance
 
-;; indentation
-(use-package indent-guide
-  :ensure t
-  :config (indent-guide-global-mode 1))
-;; (use-package highlight-indent-guide
+;; (use-package indent-guide
 ;;   :ensure t
-;;   :config
-;;   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-;;   (setq highlight-indent-guides-method 'bitmap)
-;;   (set-face-background 'highlight-indent-guides-odd-face "darkgray")
-;;   (set-face-background 'highlight-indent-guides-even-face "dimgray")
-;;   (set-face-foreground 'highlight-indent-guides-character-face "dimgray"))
+;;   :config (indent-guide-global-mode 1))
+(use-package highlight-indent-guides
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+  (setq highlight-indent-guides-method 'bitmap)
+  (set-face-background 'highlight-indent-guides-odd-face "darkgray")
+  (set-face-background 'highlight-indent-guides-even-face "dimgray")
+  (set-face-foreground 'highlight-indent-guides-character-face "dimgray"))
 
 
 ;; Magit settings
@@ -212,8 +200,8 @@
 (require 'tramp)
 (setq tramp-default-method "ssh")
 (tramp-set-completion-function "ssh"
-			       '((tramp-parse-sconfig "/etc/ssh_config")
-				 (tramp-parse-sconfig "~/.ssh/config")))
+			                      '((tramp-parse-sconfig "/etc/ssh_config")
+				                     (tramp-parse-sconfig "~/.ssh/config")))
 ;; (customize-set-variable 'tramp-syntax 'simplified)
 
 ;; Automatically updated files modified outside of emacs
@@ -283,6 +271,8 @@
 (use-package smartparens
   :ensure t
   :config
+  (require 'smartparens-config)
+  ;; (add-hook 'prog-mode-hook #'smartparens-mode)
   ;; (global-smart-paren-mode 1)
   ;; Always start smartparens mode in js-mode.
   (add-hook 'js-mode-hook #'smartparens-mode))
