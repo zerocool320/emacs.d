@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Wed Jun 17 15:36:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Fri Oct  2 18:34:27 2020 (-0500)
+;; Last-Updated: Tue Oct  6 10:23:18 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 11
+;;     Update #: 20
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -35,6 +35,9 @@
 ;;       python-shell-prompt-detect-failure-warning nil)
 ;; (add-to-list 'python-shell-completion-native-disabled-interpreters
 ;;              "jupyter")
+
+;; (setq python-shell-interpreter "ipython")
+;; (setq python-shell-interpreter-args "--pylab")
 
 ;; Enable Flycheck
 (when (require 'flycheck nil t)

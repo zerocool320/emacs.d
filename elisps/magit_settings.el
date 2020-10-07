@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Mon May 18 11:29:52 2020 (-0500)
 ;; Version:
-;; Last-Updated: Mon May 18 14:02:18 2020 (-0500)
+;; Last-Updated: Wed Oct  7 10:33:11 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 3
+;;     Update #: 4
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -35,6 +35,11 @@
         magit-restore-window-configuration t)
 
   :bind ("C-x g" . magit-status))
+
+(use-package git-timemachine
+  :ensure t
+  :bind (("s-g" . git-timemachine)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; magit_settings.el ends here

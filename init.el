@@ -6,15 +6,37 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Mon Oct  5 00:03:43 2020 (-0500)
+;; Last-Updated: Wed Oct  7 11:15:10 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 959
+;;     Update #: 991
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
 
+(require 'package)
+
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+;; keep the installed packages in .emacs.d
+(setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
 (package-initialize)
+;; update the package metadata is the local cache is missing
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; Always load newest byte code
+(setq load-prefer-newer t)
+
+;; smart tab behavior - indent or complete
+(setq tab-always-indent 'complete)
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-verbose t)
 
 (setq user-full-name "Barath Ramesh")
 (setq user-mail-address "barath.ramesh@ti.com")
@@ -25,15 +47,32 @@
                         (ding)
                         (y-or-n-p "Really quit? ")))))
 
-;;Environment
-;; (setenv "PATH" (concat "/usr/local/bin:/opt/local/bin:/usr/bin:/bin" (getenv "PATH")))
 
+(use-package auto-package-update
+  :ensure t
+  :config
+  (auto-package-update-maybe)
+  (auto-package-update-at-time "17:00")
+  (setq auto-package-update-delete-old-versions t))
 
-;; What is this issue with julia-mode?
-;; (add-to-list 'load-path "~/.emacs.d/elisps/")
-;; (require 'julia-mode)
+(use-package dash
+  :ensure t
+  :config (eval-after-load "dash" '(dash-enable-font-lock)))
 
-(load "~/.emacs.d/elisps/package_management")
+(use-package s
+  :ensure t)
+
+(use-package f
+  :ensure t)
+
+(use-package auto-compile
+  :init
+  (setq load-prefer-newer t)
+  :commands (auto-compile-on-load-mode)
+  :config
+  (setq auto-compile-display-buffer nil)
+  (setq auto-compile-mode-line-counter t)
+  (auto-compile-on-load-mode))
 
 (load "~/.emacs.d/elisps/startup_options")
 
@@ -50,15 +89,20 @@
 (load "~/.emacs.d/elisps/org_settings")
 
 ;;Smex
-(setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
+;; (smex-initialize)
+;; (global-set-key (kbd "M-x") 'smex)
+;; (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(use-package smex
+  :ensure t
+  :bind
+  (("M-x" . smex)
+   ("M-x" . smex-major-mode-commands))
+  :config
+  (smex-initialize))
 
-;;Ido mode
-(load "~/.emacs.d/elisps/ido_settings")
-
-
+;; ;;Ido mode
+;; (load "~/.emacs.d/elisps/ido_settings")
 
 ;;Temporary file management
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
@@ -71,26 +115,16 @@
 ;;Power lisp
 (load "~/.emacs.d/elisps/power_lisp")
 
-;;auto-complete
-;; (load "~/.emacs.d/elisps/auto_complete_settings.el")
-
 (load "~/.emacs.d/elisps/ac_misc")
 
 ;; buffer cleanup
-(load "~/.emacs.d/elisps/buffer_cleanup")
+;; (load "~/.emacs.d/elisps/buffer_cleanup")
 
 ;;flyspell
 (load "~/.emacs.d/elisps/flyspell_options")
 
 ;;Language Hooks
-(load "~/.emacs.d/elisps/lang_hooks")
-
-;;matlab mode in emacs, replace one in melpa
-;; (require 'matlab-load)
-;; (load "~/.emacs.d/elisps/matlab_load")
-
-;;EMMS player, not working yet
-(load "~/.emacs.d/elisps/emms_settings")
+;; (load "~/.emacs.d/elisps/lang_hooks")
 
 ;;Locate Makefile in nearest directory and compile
 (load "~/.emacs.d/elisps/make_options")
@@ -107,116 +141,26 @@
 ;; Cscope
 (load "~/.emacs.d/elisps/cscope_settings")
 
-;; VHDL mode options, needs fixing
-(load "~/.emacs.d/elisps/vhdl_options")
 
 ;;auto-header
 (load "~/.emacs.d/elisps/auto_header_options")
 
-;;opencl-mode
-(require 'opencl-mode)
-(add-to-list 'auto-mode-alist '("\\.cl\\'" . opencl-mode))
-
-;;cuda-mode
-;; (add-to-list 'load-path "~/.emacs.d/elisps/")
-;; (require 'cuda-mode)
-
-;;Pandora
-;; (load "~/.emacs.d/elisps/pandora_settings.el")
+(use-package multi-term
+  :ensure t
+  :config
+  ;; multi term
+  ;; Buggy needs fixing
+  (setq multi-term-program "/bin/zsh"))
 
 
-;;lice
-(setq lice:default-license "TI_MMALIB")
-
-;; multi term
-;; Buggy needs fixing
-(setq multi-term-program "/bin/zsh")
-
-;; Flymake: On the fly syntax checking
-;; (load "~/.emacs.d/elisps/flymake_options")
-
-;; go to the last change
-;; (package-require 'goto-chg)
-;; (global-set-key [(control .)] 'goto-last-change)
-                                        ; M-. can conflict with etags tag search. But C-. can get overwritten
-                                        ; by flyspell-auto-correct-word. And goto-last-change needs a really
-                                        ; fast key.
-;; (global-set-key [(meta .)] 'goto-last-change)
-
-;; Highlight TODO and FIXME in comments
-;; (package-require 'fic-mode)
-;; (defun add-something-to-mode-hooks (mode-list something)
-;;   "helper function to add a callback to multiple hooks"
-;;   (dolist (mode mode-list)
-;;     (add-hook (intern (concat (symbol-name mode) "-mode-hook")) something)))
-
-;; (add-something-to-mode-hooks '(cuda c c++ tcl emacs-lisp python text
-;;                                     markdown latex vhdl) 'fic-mode)
-
-
-;; (spotify-enable-song-notifications)
-
-;; enclose
-;; (require 'enclose)
-;;(enclose-global-mode)
-
-;; cmake
-;; (require 'cmake-mode)
-;; (require 'rtags)
-;; (cmake-ide-setup)
-;; (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
-;; (add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
-
-;; disable flycheck mode for now; supress c7x compile warnings
-;; flycheck mode
-;; (global-flycheck-mode)
-;; (put 'flycheck-clang-args 'safe-local-variable (lambda (xx) t))
 
 ;;Replace all freakin' ^M chars in the current buffer
 (fset 'replace-ctrlms
       [escape ?< escape ?% ?\C-q ?\C-m return ?\C-q ?\C-j return ?!])
 (global-set-key "\C-c\C-m" 'replace-ctrlms)
 
-;; tags
-;; (load "~/.emacs.d/elisps/tags_settings.el")
-
-;; CEDET
-;; (load "~/.emacs.d/elisps/cedet_options.el")
-
-;; yasnippet
-;; (require 'yasnippet)
-;; (yas-global-mode 1)
-
-;; tex, Rnw and auctex
-(load "~/.emacs.d/elisps/tex_utils_settings")
-(add-to-list 'load-path "~/.emacs.d/elisps/ess-knitr/")
-(require 'ess-knitr)
-
 ;; ploymode
 (load "~/.emacs.d/elisps/polymode_settings")
-;; Playing with fonts
-;; (set-fontset-font "fontset-default" 'gb18030 '("dejavu sans mono" . “unicode-bmp”))
-
-;; crux - NOT WORKING
-;; (global-set-key [remap move-beginning-of-line] 'crux-move-beginning-of-line)
-;; (global-set-key (kbd "C-c o") 'crux-open-with)
-;; (global-set-key [(shift return)] 'crux-smart-open-line)
-;; (global-set-key (kbd "s-r") 'crux-recentf-ido-find-file)
-;; (global-set-key (kbd "C-<backspace>") 'crux-kill-line-backwards)
-;; (global-set-key [remap kill-whole-line] 'crux-kill-whole-line)
-
-;; openwith
-(load "~/.emacs.d/elisps/openwith_settings")
-
-;; Aggressive indent mode
-;; (global-aggressive-indent-mode 1)
-;; (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
-
-;; (add-to-list
-;;  'aggressive-indent-dont-indent-if
-;;  '(and (derived-mode-p 'c++-mode 'c-mode)
-;;        (null (string-match "\\([;{}]\\|\\b\\(if\\|for\\|while\\)\\b\\)"
-;;                            (thing-at-point 'line)))))
 
 ;; Company and Irony for intellisense
 (load "~/.emacs.d/elisps/irony_company_settings")
@@ -227,42 +171,17 @@
 ;; Magit settings
 (load "~/.emacs.d/elisps/magit_settings")
 
-;; sml and powerline
-;; (load "~/.emacs.d/elisps/sml_powerline")
-
-
-;; flyparen needs fixing
-;; (load "~/.emacs.d/elisps/flyparens_options")
-
-
-
-;; doxymacs; got it in a hacky way from brew install and cp to this directory
-;; (load "~/.emacs.d/elisps/doxymacs")
-
 ;; multiple cursors
-(require 'multiple-cursors)
+(use-package multiple-cursors
+  :ensure t
+  :config
+  ;; multiple cursors
+  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
-;; auto-complete-clang
-;; (load "~/.emacs.d/elisps/auto_complete_clang_settings")
 
-
-;; Make TeX and RefTex aware of Snw and Rnw files
-;; (setq reftex-file-extensions
-;;       '(("Snw" "Rnw" "nw" "tex" ".tex" ".ltx") ("bib" ".bib")))
-;; (setq TeX-file-extensions
-;;       '("Snw" "Rnw" "nw" "tex" "sty" "cls" "ltx" "texi" "texinfo"))
-
-;; ;; Lets you do 'C-c C-c Sweave' from your Rnw file
-;; (defun emacsmate-add-Sweave ()
-;;   (add-to-list 'TeX-command-list
-;;        '("Sweave" "R CMD Sweave %s"
-;;               TeX-run-command nil (latex-mode) :help "Run Sweave") t)
-;;   (add-to-list 'TeX-command-list
-;;        '("LatexSweave" "%l %(mode) %s"
-;;               TeX-run-TeX nil (latex-mode) :help "Run Latex after Sweave") t)
-;;   (setq TeX-command-default "Sweave"))
-
-;; (add-hook 'Rnw-mode-hook 'emacsmate-add-Sweave)
 
 ;; To re-compile all packages after major emacs udpate
 ;; Has resulted in error: “Symbol's function is void: cl-struct-define”
@@ -281,14 +200,6 @@
 ;; Automatically updated files modified outside of emacs
 (global-auto-revert-mode t)
 (setq auto-revert-remote-files t)
-
-;; ESS
-;; (require 'ess-site)
-;; (require 'ess-rutils)
-;; ;; (define-key R-mode-map ";" #'ess-insert-assign)
-;; (add-hook 'R-mode-hook
-;;           (lambda ()
-;;             (local-set-key ";" #'ess-insert-assign)))
 
 ;; anaconda-mode
 (add-hook 'python-mode-hook 'anaconda-mode)
@@ -310,44 +221,11 @@
   :after spaceline
   :config (spaceline-all-the-icons-theme))
 
-;; Fix spceline and icons issue with stable
-
-;; (use-package spaceline
-;;   :ensure t
-;;   :pin melpa-stable)
-
-;; (use-package spaceline-config
-;;   :ensure spaceline
-;;   :config
-;;   ;; (use-package moe-theme
-;;   ;;   :commands (powerline-moe-theme moe-theme-set-color))
-;;   ;; (powerline-moe-theme)
-;;   ;; (moe-theme-set-color 'blue)
-;;   ;; (moe-dark)
-;;   (setq powerline-default-separator 'wave)
-;;   (spaceline-emacs-theme))
-
-
-;; (use-package spaceline-all-the-icons
-;;   :after spaceline
-;;   :pin melpa-stable
-;;   :config
-;;   (setq spaceline-all-the-icons-eyebrowse-display-name  nil
-;;      spaceline-all-the-icons-hide-long-buffer-path   t
-;;      spaceline-all-the-icons-separator-type          'wave)
-;;   (spaceline-all-the-icons--setup-neotree)
-;;   (spaceline-toggle-all-the-icons-projectile-on)
-;;   (spaceline-all-the-icons-theme))
 
 ;;Indentation
 (setq tab-width 3
       indent-tabs-mode nil)
 (setq-default c-basic-offset 3)
-
-;; spacemacs theme
-;; (load-theme 'spacemacs-dark t)
-;; (setq spacemacs-theme-org-agenda-height nil)
-;; (setq spacemacs-theme-org-height nil)
 
 ;; set sizes here to stop spacemacs theme resizing these
 (set-face-attribute 'org-level-1 nil :height 1.0)
@@ -394,8 +272,8 @@
 (load "~/.emacs.d/elisps/elpy_settings")
 
 ;; switch mac key from meta
-(load "~/.emacs.d/elisps/mac-switch-meta")
-(mac-switch-meta)
+;; (load "~/.emacs.d/elisps/mac-switch-meta")
+;; (mac-switch-meta)
 
 ;; move cursor by camelCase
 (global-subword-mode 1)
@@ -409,10 +287,185 @@
 ;; Ivy mode and swiper
 (load "~/.emacs.d/elisps/ivy_settings")
 
-;; emojify settings
-(load "~/.emacs.d/elisps/emojify_settings")
-
 (load "~/.emacs.d/elisps/company_jedi_settings")
+
+(use-package python-black
+  :ensure t
+  :demand t
+  :after python)
+
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
+(use-package rainbow-mode
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-mode))
+
+(use-package restart-emacs
+  :ensure t)
+
+(use-package smartparens
+  :ensure t
+  :config
+  ;; (global-smart-paren-mode 1)
+  ;; Always start smartparens mode in js-mode.
+  (add-hook 'js-mode-hook #'smartparens-mode))
+
+(use-package format-all
+  :ensure t
+  :pin melpa-stable
+  :config
+  (add-hook 'prog-mode-hook 'format-all-mode))
+
+(use-package whitespace
+  :init
+  (dolist (hook '(prog-mode-hook text-mode-hook))
+    (add-hook hook #'whitespace-mode))
+  (add-hook 'before-save-hook #'whitespace-cleanup)
+  :config
+  (setq whitespace-line-column 90) ;; limit line length
+  (setq whitespace-style '(face tabs empty trailing lines-tail)))
+
+(use-package avy
+  :ensure t
+  :bind (("s-." . avy-goto-word-or-subword-1)
+         ("s-," . avy-goto-char))
+  :config
+  (setq avy-background t))
+
+(use-package crux
+  :ensure t
+  :bind (("C-c o" . crux-open-with)
+         ("M-o" . crux-smart-open-line)
+         ("C-c n" . crux-cleanup-buffer-or-region)
+         ("C-c f" . crux-recentf-find-file)
+         ("C-M-z" . crux-indent-defun)
+         ("C-c u" . crux-view-url)
+         ("C-c e" . crux-eval-and-replace)
+         ("C-c w" . crux-swap-windows)
+         ("C-c D" . crux-delete-file-and-buffer)
+         ("C-c r" . crux-rename-buffer-and-file)
+         ("C-c t" . crux-visit-term-buffer)
+         ("C-c k" . crux-kill-other-buffers)
+         ("C-c TAB" . crux-indent-rigidly-and-copy-to-clipboard)
+         ("C-c I" . crux-find-user-init-file)
+         ("C-c S" . crux-find-shell-init-file)
+         ("s-r" . crux-recentf-find-file)
+         ("s-j" . crux-top-join-line)
+         ("C-^" . crux-top-join-line)
+         ("s-k" . crux-kill-whole-line)
+         ("C-<backspace>" . crux-kill-line-backwards)
+         ("s-o" . crux-smart-open-line-above)
+         ([remap move-beginning-of-line] . crux-move-beginning-of-line)
+         ([(shift return)] . crux-smart-open-line)
+         ([(control shift return)] . crux-smart-open-line-above)
+         ([remap kill-whole-line] . crux-kill-whole-line)
+         ("C-c s" . crux-ispell-word-then-abbrev)))
+
+
+(use-package diff-hl
+  :ensure t
+  :config
+  (global-diff-hl-mode +1)
+  (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+
+
+(use-package undo-tree
+  :ensure t
+  :config
+  ;; autosave the undo-tree history
+  (setq undo-tree-history-directory-alist
+        `((".*" . ,temporary-file-directory)))
+  (setq undo-tree-auto-save-history t))
+
+(use-package hl-todo
+  :ensure t
+  :config
+  (setq hl-todo-highlight-punctuation ":")
+  (global-hl-todo-mode))
+
+
+;; quit Emacs directly even if there are running processes
+(setq confirm-kill-processes nil)
+
+;; Always load newest byte code
+(setq load-prefer-newer t)
+
+;; reduce the frequency of garbage collection by making it happen on
+;; each 50MB of allocated data (the default is on every 0.76MB)
+(setq gc-cons-threshold 50000000)
+
+(size-indication-mode t)
+
+(setq ring-bell-function 'ignore)
+
+;; warn when opening files bigger than 100MB
+(setq large-file-warning-threshold 100000000)
+
+;; Newline at end of file
+(setq require-final-newline t)
+
+;; delete the selection with a keypress
+(delete-selection-mode t)
+
+(defconst ramesh-savefile-dir (expand-file-name "savefile" user-emacs-directory))
+
+;; create the savefile dir if it doesn't exist
+(unless (file-exists-p ramesh-savefile-dir)
+  (make-directory ramesh-savefile-dir))
+
+;; saveplace remembers your location in a file when saving files
+(use-package saveplace
+  :config
+  (setq save-place-file (expand-file-name "saveplace" ramesh-savefile-dir))
+  ;; activate it for all buffers
+  (setq-default save-place t))
+
+(use-package savehist
+  :config
+  (setq savehist-additional-variables
+        ;; search entries
+        '(search-ring regexp-search-ring)
+        ;; save every minute
+        savehist-autosave-interval 60
+        ;; keep the home clean
+        savehist-file (expand-file-name "savehist" ramesh-savefile-dir))
+  (savehist-mode +1))
+
+(use-package recentf
+  :config
+  (setq recentf-save-file (expand-file-name "recentf" ramesh-savefile-dir)
+        recentf-max-saved-items 500
+        recentf-max-menu-items 15
+        ;; disable recentf-cleanup on Emacs start, because it can cause
+        ;; problems with remote files
+        recentf-auto-cleanup 'never)
+  (recentf-mode +1))
+
+(use-package windmove
+  :config
+  ;; use shift + arrow keys to switch between visible buffers
+  (windmove-default-keybindings))
+
+(use-package dired
+  :config
+  ;; dired - reuse current buffer by pressing 'a'
+  (put 'dired-find-alternate-file 'disabled nil)
+
+  ;; always delete and copy recursively
+  (setq dired-recursive-deletes 'always)
+  (setq dired-recursive-copies 'always)
+
+  ;; if there is a dired buffer displayed in the next window, use its
+  ;; current subdir, instead of the current subdir of this dired buffer
+  (setq dired-dwim-target t)
+
+  ;; enable some really cool extensions like C-x C-j(dired-jump)
+  (require 'dired-x))
 
 ;; config changes made through the customize UI will be stored here
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))

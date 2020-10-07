@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:52:50 2016 (-0400)
 ;; Version:
-;; Last-Updated: Fri Sep 11 13:28:40 2020 (-0500)
+;; Last-Updated: Wed Oct  7 10:51:26 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 56
+;;     Update #: 59
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -103,6 +103,42 @@
 
 ;; (custom-set-faces
 ;;  '(default ((t (:foreground "gray85" :slant italic)))))
+
+
+;; more useful frame title, that show either a file or a
+;; buffer name (if the buffer isn't visiting a file)
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b"))))
+
+;; highlight the current line
+;; (use-package hl-line
+;;   :ensure t
+;;   :config
+;;   (global-hl-line-mode -1)
+;;   )
+
+(use-package anzu
+  :ensure t
+  :bind (("M-%" . anzu-query-replace)
+         ("C-M-%" . anzu-query-replace-regexp))
+  :config
+  (global-anzu-mode))
+
+
+(use-package hl-todo
+  :ensure t
+  :config
+  (setq hl-todo-highlight-punctuation ":")
+  (global-hl-todo-mode))
+
+;; temporarily highlight changes from yanking, etc
+(use-package volatile-highlights
+  :ensure t
+  :config
+  (volatile-highlights-mode +1))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; display_settings.el ends here
