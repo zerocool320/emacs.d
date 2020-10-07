@@ -6,13 +6,15 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Wed Oct  7 11:15:10 2020 (-0500)
+;; Last-Updated: Wed Oct  7 11:43:29 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 991
+;;     Update #: 1004
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
+
+;; TODO: Organize contents
 
 (require 'package)
 
@@ -37,9 +39,6 @@
 
 (require 'use-package)
 (setq use-package-verbose t)
-
-(setq user-full-name "Barath Ramesh")
-(setq user-mail-address "barath.ramesh@ti.com")
 
 ;; DO not close emacs accidentaly
 (setq kill-emacs-query-functions
@@ -166,7 +165,27 @@
 (load "~/.emacs.d/elisps/irony_company_settings")
 
 ;; Indentation settings
-(load "~/.emacs.d/elisps/indentation_settings")
+;;Indentation
+;; Emacs modes typically provide a standard means to change the
+;; indentation width -- eg. c-basic-offset: use that to adjust your
+;; personal indentation width, while maintaining the style (and
+;; meaning) of any files you load.
+(setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
+(setq-default tab-width 3)            ;; but maintain correct appearance
+
+;; indentation
+(use-package indent-guide
+  :ensure t
+  :config (indent-guide-global-mode 1))
+;; (use-package highlight-indent-guide
+;;   :ensure t
+;;   :config
+;;   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+;;   (setq highlight-indent-guides-method 'bitmap)
+;;   (set-face-background 'highlight-indent-guides-odd-face "darkgray")
+;;   (set-face-background 'highlight-indent-guides-even-face "dimgray")
+;;   (set-face-foreground 'highlight-indent-guides-character-face "dimgray"))
+
 
 ;; Magit settings
 (load "~/.emacs.d/elisps/magit_settings")
@@ -201,46 +220,8 @@
 (global-auto-revert-mode t)
 (setq auto-revert-remote-files t)
 
-;; anaconda-mode
-(add-hook 'python-mode-hook 'anaconda-mode)
-
-;; JIRA settings
-(load "~/.emacs.d/elisps/jira_options")
-
-(require 'all-the-icons)
-
-;; (setq powerline-default-separator 'wave)
-;; (require 'spaceline-config)
-;; (spaceline-emacs-theme)
-
-(require 'spaceline-all-the-icons)
-(require 'doom-modeline)
-(doom-modeline-mode 1)
-
-(use-package spaceline-all-the-icons
-  :after spaceline
-  :config (spaceline-all-the-icons-theme))
-
-
-;;Indentation
-(setq tab-width 3
-      indent-tabs-mode nil)
-(setq-default c-basic-offset 3)
-
-;; set sizes here to stop spacemacs theme resizing these
-(set-face-attribute 'org-level-1 nil :height 1.0)
-(set-face-attribute 'org-level-2 nil :height 1.0)
-(set-face-attribute 'org-level-3 nil :height 1.0)
-(set-face-attribute 'org-scheduled-today nil :height 1.0)
-(set-face-attribute 'org-agenda-date-today nil :height 1.1)
-(set-face-attribute 'org-table nil :foreground "#008787")
-(use-package spaceline
-  :demand t
-  :init
-  (setq powerline-default-separator 'arrow-fade)
-  :config
-  (require 'spaceline-config)
-  (spaceline-spacemacs-theme))
+(use-package all-the-icons
+  :ensure t)
 
 (load "~/.emacs.d/elisps/display_settings")
 (load "~/.emacs.d/elisps/doom-modeline")
@@ -278,9 +259,6 @@
 ;; move cursor by camelCase
 (global-subword-mode 1)
 
-'(ivy-current-match ((t (:background "#00AF00"))))
-'(ivy-highlight-face ((t (:background "#AF0000"))))
-
 (toggle-frame-fullscreen)
 (desktop-save-mode 1)
 
@@ -288,11 +266,6 @@
 (load "~/.emacs.d/elisps/ivy_settings")
 
 (load "~/.emacs.d/elisps/company_jedi_settings")
-
-(use-package python-black
-  :ensure t
-  :demand t
-  :after python)
 
 (use-package rainbow-delimiters
   :ensure t

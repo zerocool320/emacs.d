@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Wed Jun 17 15:36:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Tue Oct  6 10:23:18 2020 (-0500)
+;; Last-Updated: Wed Oct  7 11:49:57 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 20
+;;     Update #: 33
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -44,9 +44,42 @@
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-(use-package ein
+;; (use-package ein
+;;   :ensure t
+;;   :commands (ein:notebooklist-open))
+
+;; (use-package pyenv
+;;   :ensure t)
+
+;; (use-package pyenv-mode
+;;   :ensure t)
+
+(use-package anaconda-mode
   :ensure t
-  :commands (ein:notebooklist-open))
+  :config
+  (add-hook 'python-mode-hook 'anaconda-mode))
+
+(use-package company-anaconda
+  :ensure t
+  :after (company)
+  :config
+  ;;  (eval-after-load "company"
+  ;; '(add-to-list 'company-backends 'company-anaconda))
+  (eval-after-load "company"
+    '(add-to-list 'company-backends '(company-anaconda :with company-capf))))
+
+;; (use-package python-black
+;;   :ensure t
+;;   :demand t
+;;   :after python)
+
+(use-package blacken
+  :ensure t
+  :demand t
+  :after python
+  :config
+  (add-hook 'python-mode-hook 'blacken-mode))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; elpy_settings.el ends here
