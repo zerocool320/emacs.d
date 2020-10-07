@@ -1,14 +1,14 @@
-;; .emacs ---
+;; init.el ---
 ;;
-;; Filename: .emacs
+;; Filename: init.el
 ;; Description:
 ;; Author: Barath Ramesh
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Wed Oct  7 12:29:43 2020 (-0500)
+;; Last-Updated: Wed Oct  7 13:00:48 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1019
+;;     Update #: 1022
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -16,7 +16,7 @@
 
 ;; Inspired from https://github.com/bbatsov/emacs.d/blob/master/init.el
 
-;; TODO: Organize contents
+;; TODO: Organize contents and use require instead of load
 
 (require 'package)
 
@@ -433,4 +433,4 @@
 ;; config changes made through the customize UI will be stored here
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
-;; .emacs ends here
+;; init.el ends here
