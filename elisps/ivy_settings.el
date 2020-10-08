@@ -6,13 +6,22 @@
   :ensure t
   :load-path "site-lisp/popup")
 
+(use-package historian
+  :ensure t)
+(use-package ivy-historian
+  :ensure t)
+
+
 (use-package ivy
   :ensure t
   :defines
   (zenburn/bg-0
    ;; zenburn/blue
    )
+  :init
+  (historian-mode +1)
   :config
+  (ivy-historian-mode +1)
   (setq ivy-mode 1)
   (setq ivy-wrap t)
   (setq ivy-use-virtual-buffers t)
@@ -27,8 +36,8 @@
     (let ((lv-force-update t))
       (lv-message
        (if (string-match "\\`\n" text)
-	   (substring text 1)
-	 text))))
+	        (substring text 1)
+	      text))))
 
   (require 'popup)
 
@@ -36,19 +45,19 @@
     (with-ivy-window
       (popup-tip
        (setq ivy-insert-debug
-	     (substring text 1))
+	          (substring text 1))
        :nostrip t)))
 
 
   (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
 
   (setq ivy-re-builders-alist
-	'((swiper . ivy--regex-plus)
-	  (t      . ivy--regex-fuzzy)))
+	     '((swiper . ivy--regex-plus)
+	       (t      . ivy--regex-fuzzy)))
 
   (with-eval-after-load 'ivy
     (push (cons #'swiper (cdr (assq t ivy-re-builders-alist)))
-	  ivy-re-builders-alist)
+	       ivy-re-builders-alist)
     (push (cons t #'ivy--regex-fuzzy) ivy-re-builders-alist))
 
   ;; (setq ivy-prescient-mode t)

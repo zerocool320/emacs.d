@@ -39,3 +39,5 @@ smex-items
 srecode-map.el
 tramp
 transient/
+.historian
+anaconda-mode/
