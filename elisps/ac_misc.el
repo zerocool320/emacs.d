@@ -19,8 +19,8 @@
 
 (defun ac-LaTeX-mode-setup () ; add ac-sources to default ac-sources
   (setq ac-sources
-	(append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
-		ac-sources))
+    (append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
+        ac-sources))
   )
 (add-hook 'LaTeX-mode-hook 'ac-LaTeX-mode-setup)
 ;; (global-auto-complete-mode t)

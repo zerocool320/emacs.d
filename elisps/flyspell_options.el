@@ -29,8 +29,8 @@
   (setq-default ispell-list-command "list")
   ;;magit commit
   (add-hook 'text-mode-hook
-	    (lambda ()
-	      (flyspell-mode)))
+        (lambda ()
+          (flyspell-mode)))
   )
 
 

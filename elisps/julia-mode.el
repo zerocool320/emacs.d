@@ -411,8 +411,8 @@ As a result, it is true inside \"foo\", `foo` and 'f'."
 KW-LIST is a list of strings.  The word at point is not considered
 a keyword if used as a field name, X.word, or quoted, :word."
   (and (or (= (point) 1)
-	   (and (not (equal (char-before (point)) ?.))
-		(not (equal (char-before (point)) ?:))))
+       (and (not (equal (char-before (point)) ?.))
+        (not (equal (char-before (point)) ?:))))
        (not (looking-at "("))           ; handle "function(" when on (
        (member (current-word t) kw-list)
        ;; 'end' is not a keyword when used for indexing, e.g. foo[end-2]
@@ -478,9 +478,9 @@ Do not move back beyond MIN."
   (setq min (max min (point-min)))
   (let ((pos (julia-last-open-block-pos min)))
     (and pos
-	 (progn
-	   (goto-char pos)
-	   (+ julia-indent-offset (current-indentation))))))
+     (progn
+       (goto-char pos)
+       (+ julia-indent-offset (current-indentation))))))
 
 (defsubst julia--safe-backward-char ()
   "Move back one character, but don't error if we're at the
@@ -699,7 +699,7 @@ strings."
   (interactive "*i")
   (let ((orig-pt (point)))
     (while (not (or (bobp) (= ?\\ (char-before))
-		    (= ?\s (char-syntax (char-before)))))
+            (= ?\s (char-syntax (char-before)))))
       (backward-char))
     (if (and (not (bobp)) (= ?\\ (char-before)))
         (progn

@@ -14,9 +14,9 @@
   (interactive)
   (if (eq mac-option-modifier nil)
       (progn
-	(setq mac-option-modifier 'meta)
-	(setq mac-command-modifier 'hyper)
-	)
+    (setq mac-option-modifier 'meta)
+    (setq mac-command-modifier 'hyper)
+    )
     (progn
       (setq mac-option-modifier nil)
       (setq mac-command-modifier 'meta)

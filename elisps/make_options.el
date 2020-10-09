@@ -18,9 +18,9 @@
 ;; (defun compile-parent (command)
 ;;   (interactive
 ;;    (let* ((make-directory (locate-dominating-file (buffer-file-name)
-;;						  "Makefile"))
-;;	  (command (concat "make -k -j8 -C "
-;;			   (shell-quote-argument make-directory))))
+;;                          "Makefile"))
+;;      (command (concat "make -k -j8 -C "
+;;               (shell-quote-argument make-directory))))
 ;;      (list (compilation-read-command command))))
 ;;   (compile command))
 
@@ -28,9 +28,9 @@
 ;; (defun compile-parent (command)
 ;;   (interactive
 ;;    (let* ((make-directory (locate-dominating-file (buffer-file-name)
-;;						  "Makefile"))
-;;	  (command (concat "make -k -j8 -C "
-;;			   (shell-quote-argument make-directory) make-param)))
+;;                          "Makefile"))
+;;      (command (concat "make -k -j8 -C "
+;;               (shell-quote-argument make-directory) make-param)))
 ;;      (list (compilation-read-command command))))
 ;;   (compile command))
 
@@ -38,9 +38,9 @@
 (defun compile-parent (command)
   (interactive
    (let* ((make-directory (locate-dominating-file (buffer-file-name)
-						  "Makefile"))
-	  (command (concat "make -k -j8 -C "
-			   (shell-quote-argument make-directory) " cnn_c7xmma/MMALIB_CNN_fullyConnected_ixX_ixX_oxX TEST_ENV=LOKI FLAT_MEM=1")))
+                          "Makefile"))
+      (command (concat "make -k -j8 -C "
+               (shell-quote-argument make-directory) " cnn_c7xmma/MMALIB_CNN_fullyConnected_ixX_ixX_oxX TEST_ENV=LOKI FLAT_MEM=1")))
      (list (compilation-read-command command))))
   (compile command))
 

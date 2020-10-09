@@ -18,11 +18,11 @@
       org-todo-keywords '((sequence "TODO" "INPROGRESS" "DONE"))
       org-todo-keyword-faces '(("INPROGRESS" . (:foreground "blue" :weight bold))))
 (add-hook 'org-mode-hook
-	  (lambda ()
-	    (flyspell-mode)))
+      (lambda ()
+        (flyspell-mode)))
 (add-hook 'org-mode-hook
-	  (lambda ()
-	    (writegood-mode)))
+      (lambda ()
+        (writegood-mode)))
 
 ;;org-agenda
 (global-set-key (kbd "C-c a") 'org-agenda)
@@ -30,7 +30,7 @@
       org-agenda-todo-ignore-scheduled t
       org-agenda-todo-ignore-deadlines t)
 (setq org-agenda-files (list "~/Dropbox/org/personal.org"
-			     "~/Dropbox/org/groupon.org"))
+                 "~/Dropbox/org/groupon.org"))
 
 ;;org-habit
 (require 'org)
@@ -82,8 +82,8 @@
 
 ;;set colours for priorities
 (setq org-priority-faces '((?A . (:foreground "DarkOrange4" :weight bold))
-			   (?B . (:foreground "turquoise4"))
-			   (?C . (:foreground "OliveDrab4"))))
+               (?B . (:foreground "turquoise4"))
+               (?C . (:foreground "OliveDrab4"))))
 
 
 ;;open agenda in current window
@@ -93,17 +93,17 @@
 (defun capture-report-data-file (path)
   (let ((name (read-string "Name: ")))
     (expand-file-name (format "%s-%s.txt"
-			      (format-time-string "%Y-%m-%d")
-			      name) path)))
+                  (format-time-string "%Y-%m-%d")
+                  name) path)))
 
 (define-key global-map (kbd "C-c c") 'org-capture)
 (setq org-capture-templates
       '(("t" "todo" entry    (file (capture-report-date-file  "~/path/path/name"))
-	 "* TODO [#A] %?")))
+     "* TODO [#A] %?")))
 
 (setq org-agenda-files (list "~/org/mmalib.org"
-			     "~/org/sys_admin.org"
-			     "~/org/misc.org"))
+                 "~/org/sys_admin.org"
+                 "~/org/misc.org"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -128,9 +128,9 @@
 (setq org-agenda-sorting-strategy
       (quote
        ((agenda deadline-up priority-down)
-	(todo priority-down category-keep)
-	(tags priority-down category-keep)
-	(search category-keep))))
+    (todo priority-down category-keep)
+    (tags priority-down category-keep)
+    (search category-keep))))
 
 
 ;; add additional languages with '((language . t)))

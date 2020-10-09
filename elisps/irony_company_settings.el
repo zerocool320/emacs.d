@@ -82,7 +82,7 @@
 
     ;; Use compilation database first, clang_complete as fallback.
     (setq-default irony-cdb-compilation-databases '(irony-cdb-libclang
-						    irony-cdb-clang-complete))
+                            irony-cdb-clang-complete))
 
     (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
     ))
@@ -121,7 +121,7 @@
 ;;   (progn
 ;;     (eval-after-load 'company
 ;;       '(add-to-list
-;; 	'company-backends '(company-irony-c-headers company-irony)))))
+;;     'company-backends '(company-irony-c-headers company-irony)))))
 
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))

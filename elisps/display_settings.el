@@ -36,7 +36,7 @@
 ;; (set-background-color "#2e3436")
 
 ;; (add-hook 'after-init-hook
-;;	  (lambda () (load-theme 'cyberpunk t)))
+;;      (lambda () (load-theme 'cyberpunk t)))
 
 (use-package doom-themes
   :ensure t
@@ -79,9 +79,9 @@
   (set-face-background 'show-paren-match-face (face-background 'default))
   (if (boundp 'font-lock-comment-face)
       (set-face-foreground 'show-paren-match-face
-			                  (face-foreground 'font-lock-comment-face))
+                              (face-foreground 'font-lock-comment-face))
     (set-face-foreground 'show-paren-match-face
-			                (face-foreground 'default)))
+                            (face-foreground 'default)))
   (set-face-attribute 'show-paren-match-face nil :weight 'extra-bold))
 (set-face-background 'show-paren-match (face-background 'default))
 (set-face-foreground 'show-paren-match "grey100")
@@ -90,13 +90,13 @@
 (defadvice show-paren-function
     (after show-matching-paren-offscreen activate)
   "If the matching paren is offscreen, show the matching line in the
-	echo area. Has no effect if the character before point is not of
-	the syntax class ')'."
+    echo area. Has no effect if the character before point is not of
+    the syntax class ')'."
   (interactive)
   (let* ((cb (char-before (point)))
-	      (matching-text (and cb
-			                    (char-equal (char-syntax cb) ?\) )
-			                    (blink-matching-open))))
+          (matching-text (and cb
+                                (char-equal (char-syntax cb) ?\) )
+                                (blink-matching-open))))
     (when matching-text (message matching-text))))
 
 

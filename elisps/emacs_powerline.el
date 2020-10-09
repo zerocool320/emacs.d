@@ -29,9 +29,9 @@
 (setq powerline-color2 "grey40")
 
 (set-face-attribute 'mode-line nil
-		 :foreground "black"
-		 :background "sea green"
-		 :box nil)
+         :foreground "black"
+         :background "sea green"
+         :box nil)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

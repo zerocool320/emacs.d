@@ -58,10 +58,10 @@
   :config
   (progn
     ;; ( setq rtags-completions-enabled t
-    ;; 		rtags-path "/home/ramesh/.emacs.d/rtags/src/rtags.el"
-    ;; 		rtags-rc-binary-name "/home/ramesh/.emacs.d/rtags/bin/rc"
-    ;; 		rtags-use-helm t
-    ;; 		rtags-rdm-binary-name "/home/ramesh/.emacs.d/rtags/bin/rdm")
+    ;;         rtags-path "/home/ramesh/.emacs.d/rtags/src/rtags.el"
+    ;;         rtags-rc-binary-name "/home/ramesh/.emacs.d/rtags/bin/rc"
+    ;;         rtags-use-helm t
+    ;;         rtags-rdm-binary-name "/home/ramesh/.emacs.d/rtags/bin/rdm")
     (unless (rtags-executable-find "rc") (error "Binary rc is not installed!"))
     (unless (rtags-executable-find "rdm") (error "Binary rdm is not installed!"))
 
