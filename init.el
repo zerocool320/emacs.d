@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Fri Oct  9 15:28:47 2020 (-0500)
+;; Last-Updated: Fri Oct  9 15:58:08 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1032
+;;     Update #: 1037
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -119,14 +119,15 @@
 ;;flyspell
 (load "~/.emacs.d/elisps/flyspell_options")
 
-;; Doxygen for emacs ;; copy doxymacs folder from site-lisp after brew install
-(add-to-list 'load-path "~/.emacs.d/doxymacs/")
+;; ;; Doxygen for emacs ;; copy doxymacs folder from site-lisp after brew install
+(load "~/.emacs.d/elisps/doxymacs.el")
+(load "~/.emacs.d/elisps/xml-parse.el")
 (require 'doxymacs)
-;; (add-hook 'c-mode-common-hook 'doxymacs-mode)
-;; (defun my-doxymacs-font-lock-hook ()
-;;   (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
-;;       (doxymacs-font-lock)))
-;; (add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+(add-hook 'c-mode-common-hook 'doxymacs-mode)
+(defun my-doxymacs-font-lock-hook ()
+  (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+      (doxymacs-font-lock)))
+(add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
 
 ;; Cscope
 (load "~/.emacs.d/elisps/cscope_settings")
