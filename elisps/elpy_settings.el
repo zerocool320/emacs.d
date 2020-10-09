@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Wed Jun 17 15:36:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Thu Oct  8 11:30:12 2020 (-0500)
+;; Last-Updated: Fri Oct  9 16:18:40 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 44
+;;     Update #: 45
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -40,8 +40,10 @@
 
 
 ;; Enable autopep8
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+(use-package py-autopep8
+  :ensure t
+  :config
+  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
 ;; Use IPython for REPL
 ;; (setq python-shell-interpreter "jupyter"

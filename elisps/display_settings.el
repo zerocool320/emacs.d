@@ -6,19 +6,22 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:52:50 2016 (-0400)
 ;; Version:
-;; Last-Updated: Fri Oct  9 15:43:53 2020 (-0500)
+;; Last-Updated: Fri Oct  9 16:21:04 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 62
+;;     Update #: 64
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
 
 ;;Column number mode, column rule
-(setq column-number-mode t)
-(setq column-enforce-mode t)
-(setq column-enforce-column 90)
-(add-hook 'prog-mode-hook 'column-enforce-mode)
+;; Highlight lines with 80+ characters
+(use-package column-enforce-mode
+  :ensure t
+  :config
+  (set-face-attribute 'column-enforce-face nil :foreground "#ff0000")
+  (setq column-enforce-column 90)
+  (add-hook 'prog-mode-hook 'column-enforce-mode))
 
 ;; line number mode
 (when (version<= "26.0.50" emacs-version )
@@ -53,6 +56,7 @@
 ;; (load-theme 'doom-zenburn t)
 ;; (load-theme 'doom-monokai-pro t)
 (use-package doom-themes
+  :ensure t
   :config
   ;; Global settings (defaults)
   ;; (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled

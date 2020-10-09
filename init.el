@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Fri Oct  9 15:58:08 2020 (-0500)
+;; Last-Updated: Fri Oct  9 16:32:22 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1037
+;;     Update #: 1046
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -89,7 +89,7 @@
 (load "~/.emacs.d/elisps/key_bindings")
 
 ;;Settings, enable logging when tasks are complete
-(load "~/.emacs.d/elisps/org_settings")
+;; (load "~/.emacs.d/elisps/org_settings")
 
 ;;Smex
 ;; (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
@@ -106,31 +106,33 @@
 
 ;; ;;Ido mode
 ;; (load "~/.emacs.d/elisps/ido_settings")
+;; Ivy mode and swiper
+(load "~/.emacs.d/elisps/ivy_settings")
 
 ;;Temporary file management
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 ;;Power lisp
-(load "~/.emacs.d/elisps/power_lisp")
+;; (load "~/.emacs.d/elisps/power_lisp")
 
-(load "~/.emacs.d/elisps/ac_misc")
+;; (load "~/.emacs.d/elisps/ac_misc")
 
 ;;flyspell
 (load "~/.emacs.d/elisps/flyspell_options")
 
 ;; ;; Doxygen for emacs ;; copy doxymacs folder from site-lisp after brew install
-(load "~/.emacs.d/elisps/doxymacs.el")
-(load "~/.emacs.d/elisps/xml-parse.el")
-(require 'doxymacs)
-(add-hook 'c-mode-common-hook 'doxymacs-mode)
-(defun my-doxymacs-font-lock-hook ()
-  (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
-      (doxymacs-font-lock)))
-(add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+;; (load "~/.emacs.d/elisps/doxymacs.el")
+;; (load "~/.emacs.d/elisps/xml-parse.el")
+;; (require 'doxymacs)
+;; (add-hook 'c-mode-common-hook 'doxymacs-mode)
+;; (defun my-doxymacs-font-lock-hook ()
+;;  (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+;;      (doxymacs-font-lock)))
+;; (add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
 
 ;; Cscope
-(load "~/.emacs.d/elisps/cscope_settings")
+;; (load "~/.emacs.d/elisps/cscope_settings")
 
 
 ;;auto-header
@@ -215,7 +217,7 @@
   :ensure t)
 
 (load "~/.emacs.d/elisps/display_settings")
-(load "~/.emacs.d/elisps/doom-modeline")
+(load "~/.emacs.d/elisps/doom_modeline_settings.el")
 
 ;; Set fonts need to be set after sml
 (load "~/.emacs.d/elisps/font_options")
@@ -224,9 +226,6 @@
 
 ;; projectile settings
 (load "~/.emacs.d/elisps/projectile_settings")
-
-;; counsel-tramp settings
-(load "~/.emacs.d/elisps/counsel_tramp_settings")
 
 ;; which-key settings
 (load "~/.emacs.d/elisps/which_key_settings")
@@ -253,8 +252,7 @@
 (toggle-frame-fullscreen)
 (desktop-save-mode 1)
 
-;; Ivy mode and swiper
-(load "~/.emacs.d/elisps/ivy_settings")
+
 
 (load "~/.emacs.d/elisps/company_jedi_settings")
 
@@ -429,6 +427,14 @@
 
   ;; enable some really cool extensions like C-x C-j(dired-jump)
   (require 'dired-x))
+
+(use-package counsel-tramp
+  :ensure t
+  :config
+  (setq tramp-default-method "ssh")
+  (define-key global-map (kbd "C-c s") 'counsel-tramp)
+  (setq make-backup-files nil)
+  (setq create-lockfiles nil))
 
 ;; config changes made through the customize UI will be stored here
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
