@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:52:50 2016 (-0400)
 ;; Version:
-;; Last-Updated: Fri Oct  9 16:21:04 2020 (-0500)
+;; Last-Updated: Fri Oct  9 17:10:42 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 64
+;;     Update #: 65
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -38,23 +38,6 @@
 ;; (add-hook 'after-init-hook
 ;;	  (lambda () (load-theme 'cyberpunk t)))
 
-
-;; (load-theme 'organic-green t)
-;; (load-theme 'zenburn t)
-;; (load-theme 'doom-sourcerer t)
-;; (load-theme 'spacemacs-dark t)
-;; (load-theme 'afternoon t)
-;; (load-theme 'alect-dark t)
-;; (load-theme 'planet t)
-;; (load-theme 'solarized-dark t)
-;; (load-theme 'zen-and-art t)
-;; (load-theme 'sanityinc-tomorrow-night t)
-;; (load-theme 'doom-one)
-;; (load-theme 'doom-spacegrey)
-;; (load-theme 'doom-moonlight)
-;; (load-theme 'doom-vibrant)
-;; (load-theme 'doom-zenburn t)
-;; (load-theme 'doom-monokai-pro t)
 (use-package doom-themes
   :ensure t
   :config
