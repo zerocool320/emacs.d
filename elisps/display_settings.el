@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:52:50 2016 (-0400)
 ;; Version:
-;; Last-Updated: Wed Oct  7 10:51:26 2020 (-0500)
+;; Last-Updated: Fri Oct  9 15:43:53 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 59
+;;     Update #: 62
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -50,9 +50,27 @@
 ;; (load-theme 'doom-spacegrey)
 ;; (load-theme 'doom-moonlight)
 ;; (load-theme 'doom-vibrant)
-(load-theme 'doom-zenburn t)
+;; (load-theme 'doom-zenburn t)
 ;; (load-theme 'doom-monokai-pro t)
+(use-package doom-themes
+  :config
+  ;; Global settings (defaults)
+  ;; (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+  ;;       doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  ;; (load-theme 'doom-one t)
+  (load-theme 'doom-zenburn t)
 
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+  (doom-themes-treemacs-config)
+
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 ;; Add proper word wrapping
 (global-visual-line-mode t)
 
@@ -74,12 +92,12 @@
   (set-face-background 'show-paren-match-face (face-background 'default))
   (if (boundp 'font-lock-comment-face)
       (set-face-foreground 'show-paren-match-face
-			   (face-foreground 'font-lock-comment-face))
+			                  (face-foreground 'font-lock-comment-face))
     (set-face-foreground 'show-paren-match-face
-			 (face-foreground 'default)))
+			                (face-foreground 'default)))
   (set-face-attribute 'show-paren-match-face nil :weight 'extra-bold))
 (set-face-background 'show-paren-match (face-background 'default))
-(set-face-foreground 'show-paren-match "#def")
+(set-face-foreground 'show-paren-match "grey100")
 (set-face-attribute 'show-paren-match nil :weight 'extra-bold)
 
 (defadvice show-paren-function
@@ -89,9 +107,9 @@
 	the syntax class ')'."
   (interactive)
   (let* ((cb (char-before (point)))
-	 (matching-text (and cb
-			     (char-equal (char-syntax cb) ?\) )
-			     (blink-matching-open))))
+	      (matching-text (and cb
+			                    (char-equal (char-syntax cb) ?\) )
+			                    (blink-matching-open))))
     (when matching-text (message matching-text))))
 
 

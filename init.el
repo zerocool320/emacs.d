@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Wed Oct  7 13:02:26 2020 (-0500)
+;; Last-Updated: Fri Oct  9 15:28:47 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1023
+;;     Update #: 1032
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -48,6 +48,8 @@
                         (ding)
                         (y-or-n-p "Really quit? ")))))
 
+
+(use-package diminish  :ensure t)
 
 (use-package auto-package-update
   :ensure t
@@ -271,11 +273,8 @@
 (use-package smartparens
   :ensure t
   :config
-  (require 'smartparens-config)
-  ;; (add-hook 'prog-mode-hook #'smartparens-mode)
-  ;; (global-smart-paren-mode 1)
-  ;; Always start smartparens mode in js-mode.
-  (add-hook 'js-mode-hook #'smartparens-mode))
+  (smartparens-global-mode t)
+  :diminish smartparens-mode)
 
 (use-package format-all
   :ensure t

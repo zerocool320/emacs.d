@@ -11,13 +11,12 @@
 (use-package ivy-historian
   :ensure t)
 
-
 (use-package ivy
   :ensure t
-  :defines
-  (zenburn/bg-0
-   ;; zenburn/blue
-   )
+  ;; :defines
+  ;; (zenburn/bg-0
+  ;;  ;; zenburn/blue
+  ;;  )
   :init
   (historian-mode +1)
   :config
