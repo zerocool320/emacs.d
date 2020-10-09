@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Fri Oct  9 17:06:46 2020 (-0500)
+;; Last-Updated: Fri Oct  9 18:05:06 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1048
+;;     Update #: 1049
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -205,8 +205,8 @@
 (require 'tramp)
 (setq tramp-default-method "ssh")
 (tramp-set-completion-function "ssh"
-                                  '((tramp-parse-sconfig "/etc/ssh_config")
-                                     (tramp-parse-sconfig "~/.ssh/config")))
+                               '((tramp-parse-sconfig "/etc/ssh_config")
+                                 (tramp-parse-sconfig "~/.ssh/config")))
 ;; (customize-set-variable 'tramp-syntax 'simplified)
 
 ;; Automatically updated files modified outside of emacs
