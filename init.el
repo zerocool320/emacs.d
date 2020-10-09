@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Fri Oct  9 16:32:22 2020 (-0500)
+;; Last-Updated: Fri Oct  9 17:06:46 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1046
+;;     Update #: 1048
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -262,9 +262,7 @@
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package rainbow-mode
-  :ensure t
-  :config
-  (add-hook 'prog-mode-hook #'rainbow-mode))
+  :ensure t)
 
 (use-package restart-emacs
   :ensure t)
@@ -435,6 +433,14 @@
   (define-key global-map (kbd "C-c s") 'counsel-tramp)
   (setq make-backup-files nil)
   (setq create-lockfiles nil))
+
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 
 ;; config changes made through the customize UI will be stored here
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
