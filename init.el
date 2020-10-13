@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Mon Oct 12 22:32:01 2020 (-0500)
+;; Last-Updated: Tue Oct 13 11:12:42 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1053
+;;     Update #: 1054
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -47,7 +47,6 @@
       (list (function (lambda ()
                         (ding)
                         (y-or-n-p "Really quit? ")))))
-
 
 (use-package diminish  :ensure t)
 
