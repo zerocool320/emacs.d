@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Wed Jun 17 15:36:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Fri Oct  9 16:18:40 2020 (-0500)
+;; Last-Updated: Mon Oct 12 22:40:13 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 45
+;;     Update #: 49
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -23,7 +23,8 @@
   :hook ((elpy-mode . flycheck-mode)
          (elpy-mode . (lambda ()
                         (set (make-local-variable 'company-backends)
-                             '((elpy-company-backend :with company-yasnippet))))))
+                             '((elpy-company-backend :with company-tabnine company-jedi)))))
+         )
   :init
   (elpy-enable)
   :config
