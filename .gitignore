@@ -41,3 +41,4 @@ tramp
 transient/
 .historian
 anaconda-mode/
+.python-environments/
