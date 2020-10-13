@@ -2,6 +2,7 @@
 My emacs configuration
 
 Checkout the "dev_mac" or "dev_ubuntu" branch for bleeding-edge version 
+
 TODO: 
 - Need to consolidate Mac and Ubuntu branches to a single dev branch
 
