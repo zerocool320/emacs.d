@@ -92,18 +92,9 @@
 
   (custom-set-faces
    '(ivy-current-match
-     ((((class color) (background light))
-       :background nil :foreground nil)
-      (((class color) (background dark))
-       :background "DimGrey" :foreground nil)))))
-
-
-(custom-set-faces
- '(ivy-current-match
-   ((((class color) (background light))
-     :background nil :foreground nil)
-    (((class color) (background dark))
-     :background "DimGrey" :foreground nil))))
+     ((((class color) (background dark))
+       :background "DimGrey" :foreground nil))))
+  )
 
 
 ;; '(ivy-current-match ((t (:background "#00AF00"))))

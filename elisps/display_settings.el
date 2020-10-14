@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:52:50 2016 (-0400)
 ;; Version:
-;; Last-Updated: Fri Oct  9 17:10:42 2020 (-0500)
+;; Last-Updated: Wed Oct 14 11:51:23 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 65
+;;     Update #: 73
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -45,6 +45,9 @@
   ;; (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
   ;;       doom-themes-enable-italic t) ; if nil, italics is universally disabled
   ;; (load-theme 'doom-one t)
+  ;; (load-theme 'doom-tomorrow-night t)
+  ;; (load-theme 'doom-gruvbox t)
+  ;; (load-theme 'doom-dracula t)
   (load-theme 'doom-zenburn t)
 
   ;; Enable flashing mode-line on errors
@@ -79,9 +82,9 @@
   (set-face-background 'show-paren-match-face (face-background 'default))
   (if (boundp 'font-lock-comment-face)
       (set-face-foreground 'show-paren-match-face
-                              (face-foreground 'font-lock-comment-face))
+                           (face-foreground 'font-lock-comment-face))
     (set-face-foreground 'show-paren-match-face
-                            (face-foreground 'default)))
+                         (face-foreground 'default)))
   (set-face-attribute 'show-paren-match-face nil :weight 'extra-bold))
 (set-face-background 'show-paren-match (face-background 'default))
 (set-face-foreground 'show-paren-match "grey100")
@@ -94,9 +97,9 @@
     the syntax class ')'."
   (interactive)
   (let* ((cb (char-before (point)))
-          (matching-text (and cb
-                                (char-equal (char-syntax cb) ?\) )
-                                (blink-matching-open))))
+         (matching-text (and cb
+                             (char-equal (char-syntax cb) ?\) )
+                             (blink-matching-open))))
     (when matching-text (message matching-text))))
 
 
@@ -143,7 +146,6 @@
   :ensure t
   :config
   (volatile-highlights-mode +1))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; display_settings.el ends here
