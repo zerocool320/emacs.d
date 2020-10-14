@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:52:50 2016 (-0400)
 ;; Version:
-;; Last-Updated: Wed Oct 14 11:51:23 2020 (-0500)
+;; Last-Updated: Wed Oct 14 18:01:00 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 73
+;;     Update #: 74
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -20,7 +20,7 @@
   :ensure t
   :config
   (set-face-attribute 'column-enforce-face nil :foreground "#ff0000")
-  (setq column-enforce-column 90)
+  (setq column-enforce-column 80)
   (add-hook 'prog-mode-hook 'column-enforce-mode))
 
 ;; line number mode

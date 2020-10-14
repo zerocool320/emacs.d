@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Wed Oct 14 09:46:43 2020 (-0500)
+;; Last-Updated: Wed Oct 14 18:00:43 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1062
+;;     Update #: 1064
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -284,7 +284,7 @@
     (add-hook hook #'whitespace-mode))
   (add-hook 'before-save-hook #'whitespace-cleanup)
   :config
-  (setq whitespace-line-column 90) ;; limit line length
+  (setq whitespace-line-column 80) ;; limit line length
   (setq whitespace-style '(face tabs empty trailing lines-tail)))
 
 (use-package avy
@@ -447,23 +447,23 @@
 ;;   :config
 ;;   (dashboard-setup-startup-hook))
 
-(use-package workgroups2
-  :ensure t
-  :config
-  ;; Change workgroups session file
-  (setq wg-session-file "~/.emacs.d/.emacs_workgroups")
+;; (use-package workgroups2
+;;   :ensure t
+;;   :config
+;;   ;; Change workgroups session file
+;;   (setq wg-session-file "~/.emacs.d/.emacs_workgroups")
 
-  ;; What to do on Emacs exit / workgroups-mode exit?
-  (setq wg-emacs-exit-save-behavior           'save)      ; Options: 'save 'ask nil
-  (setq wg-workgroups-mode-exit-save-behavior 'save)      ; Options: 'save 'ask nil
+;;   ;; What to do on Emacs exit / workgroups-mode exit?
+;;   (setq wg-emacs-exit-save-behavior           'save)      ; Options: 'save 'ask nil
+;;   (setq wg-workgroups-mode-exit-save-behavior 'save)      ; Options: 'save 'ask nil
 
-  ;; Mode Line changes
-  ;; Display workgroups in Mode Line?
-  (setq wg-mode-line-display-on t)          ; Default: (not (featurep 'powerline))
-  (setq wg-flag-modified t)                 ; Display modified flags as well
-  (setq wg-mode-line-decor-left-brace "["
-        wg-mode-line-decor-right-brace "]"  ; how to surround it
-        wg-mode-line-decor-divider ":"))
+;;   ;; Mode Line changes
+;;   ;; Display workgroups in Mode Line?
+;;   (setq wg-mode-line-display-on t)          ; Default: (not (featurep 'powerline))
+;;   (setq wg-flag-modified t)                 ; Display modified flags as well
+;;   (setq wg-mode-line-decor-left-brace "["
+;;         wg-mode-line-decor-right-brace "]"  ; how to surround it
+;;         wg-mode-line-decor-divider ":"))
 
 ;; config changes made through the customize UI will be stored here
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
