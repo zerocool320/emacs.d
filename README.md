@@ -1,3 +1,6 @@
 # emacs.d
-Current Known Bugs
-- doom-themes do not get loaded properly
+My emacs configuration
+
+Checkout the "dev" branch for bleeding-edge version 
+
+This is a work under progress. I will update my main branch once I am in a "somewhat" stable state

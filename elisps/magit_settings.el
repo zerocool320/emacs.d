@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Mon May 18 11:29:52 2020 (-0500)
 ;; Version:
-;; Last-Updated: Wed Oct 14 18:14:39 2020 (-0500)
+;; Last-Updated: Wed Oct 14 18:20:50 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 5
+;;     Update #: 6
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -33,6 +33,7 @@
         magit-push-always-verify nil
         ;; Get rid of the previous advice to go into fullscreen
         magit-restore-window-configuration t)
+  ;; From Kyle Meyer https://emacs.stackexchange.com/users/2114/kyle-meyer
   (defun magit-display-buffer-pop-up-frame (buffer)
     (if (with-current-buffer buffer (eq major-mode 'magit-status-mode))
         (display-buffer buffer

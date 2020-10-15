@@ -6,17 +6,20 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Wed Oct 14 18:00:43 2020 (-0500)
+;; Last-Updated: Wed Oct 14 23:13:39 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1064
+;;     Update #: 1076
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
 
+
 ;; Inspired from https://github.com/bbatsov/emacs.d/blob/master/init.el
 
-;; TODO: Organize contents and use require instead of load
+;; TODO:
+;; - Organize contents and use require instead of load
+;; - Get rid of unwanted comment blocks
 
 (require 'package)
 
@@ -173,11 +176,12 @@
   :ensure t
   :config
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-  (setq highlight-indent-guides-method 'bitmap)
+  (if (equal system-type 'darwin)
+      (setq highlight-indent-guides-method 'bitmap)
+    (setq highlight-indent-guides-method 'character))
   (set-face-background 'highlight-indent-guides-odd-face "darkgray")
   (set-face-background 'highlight-indent-guides-even-face "dimgray")
   (set-face-foreground 'highlight-indent-guides-character-face "dimgray"))
-
 
 ;; Magit settings
 (load "~/.emacs.d/elisps/magit_settings")
@@ -439,7 +443,7 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "pandoc"))
 
 
 ;; (use-package dashboard
