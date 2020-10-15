@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Wed Jun 17 15:36:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Mon Oct 12 22:40:13 2020 (-0500)
+;; Last-Updated: Thu Oct 15 10:25:10 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 49
+;;     Update #: 51
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -41,10 +41,10 @@
 
 
 ;; Enable autopep8
-(use-package py-autopep8
-  :ensure t
-  :config
-  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+;; (use-package py-autopep8
+;;   :ensure t
+;;   :config
+;;   (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
 ;; Use IPython for REPL
 ;; (setq python-shell-interpreter "jupyter"
@@ -97,7 +97,7 @@
   :ensure t
   :hook (python-mode . blacken-mode)
   :config
-  (setq blacken-line-length '88))
+  (setq blacken-line-length '78))
 
 
 (use-package python
