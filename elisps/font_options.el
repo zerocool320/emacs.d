@@ -8,7 +8,7 @@
 ;; Version:
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 65
+;;     Update #: 74
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -37,16 +37,14 @@
 (if (equal system-type 'darwin)
     (progn
       (set-frame-font "Monaco" nil t)
-           ;; (set-frame-font "MesloLGS Nerd Font Mono" nil t)
-           ;; (set-frame-font "Hack Nerd Font Mono" nil t)
+      ;; (set-frame-font "MesloLGS Nerd Font Mono" nil t)
+      ;; (set-frame-font "Hack Nerd Font Mono" nil t)
       (set-face-attribute 'default nil :height 180))
   (progn
     (set-frame-font "Ubuntu Mono" nil t)
-       ;; (set-frame-font "MesloLGS Nerd Font Mono" nil t)
+    ;; (set-frame-font "MesloLGS Nerd Font Mono" nil t)
     ;; (set-frame-font "Hack Nerd Font Mono" nil t)
     (set-face-attribute 'default nil :height 160)))
-
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Tue Oct 13 16:56:54 2020 (-0500)
+;; Last-Updated: Wed Oct 14 22:53:36 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1061
+;;     Update #: 1071
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -173,11 +173,12 @@
   :ensure t
   :config
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-  (setq highlight-indent-guides-method 'bitmap)
+  (if (equal system-type 'darwin)
+      (setq highlight-indent-guides-method 'bitmap)
+    (setq highlight-indent-guides-method 'character))
   (set-face-background 'highlight-indent-guides-odd-face "darkgray")
   (set-face-background 'highlight-indent-guides-even-face "dimgray")
   (set-face-foreground 'highlight-indent-guides-character-face "dimgray"))
-
 
 ;; Magit settings
 (load "~/.emacs.d/elisps/magit_settings")
