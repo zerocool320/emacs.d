@@ -9,3 +9,36 @@
 
 # Undo-tree save-files
 *.~undo-tree
+
+# Things in my .emacs.d directory
+.emacs.desktop
+.emacs.desktop.lock
+.last-package-update-day
+.lsp-session-v1
+.mc-lists.el
+.smex-items
+SessionDesktop.el
+abbrev_defs
+ac-comphist.dat
+bookmarks
+custom.el
+doxymacs/
+elpa/
+elpy/
+emms/
+emojis/
+eshell/
+irony/
+lice/
+network-security.data
+org-journal.cache
+projectile-bookmarks.eld
+recentf
+savefile/
+smex-items
+srecode-map.el
+tramp
+transient/
+.historian
+anaconda-mode/
+.python-environments/
