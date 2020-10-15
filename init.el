@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Wed Oct 14 22:53:36 2020 (-0500)
+;; Last-Updated: Wed Oct 14 23:13:39 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1071
+;;     Update #: 1076
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -16,7 +16,9 @@
 
 ;; Inspired from https://github.com/bbatsov/emacs.d/blob/master/init.el
 
-;; TODO: Organize contents and use require instead of load
+;; TODO:
+;; - Organize contents and use require instead of load
+;; - Get rid of unwanted comment blocks
 
 (require 'package)
 
@@ -440,7 +442,7 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "pandoc"))
 
 
 ;; (use-package dashboard
