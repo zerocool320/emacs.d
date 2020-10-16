@@ -6,13 +6,26 @@
 ;; Maintainer:
 ;; Created: Wed Jun 17 15:36:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Thu Oct 15 10:25:10 2020 (-0500)
+;; Last-Updated: Thu Oct 15 21:43:15 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 51
+;;     Update #: 64
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
+
+;; (use-package elpy
+;;   :mode ("\\.py\\'" . python-mode)
+;;   :interpreter ("python" . python-mode)
+;;   :init
+;;   (setq-default python-shell-interpreter "python3")
+;;   (setq elpy-shell-use-project-root nil)
+;;   (setq elpy-rpc-python-command "python3")
+;;   (setq elpy-modules (quote
+;;     (elpy-module-company elpy-module-eldoc
+;;     elpy-module-highlight-indentation elpy-module-yasnippet
+;;     elpy-module-autodoc elpy-module-sane-defaults)))
+;;   (elpy-enable))
 
 (use-package elpy
   :ensure t
@@ -26,10 +39,16 @@
                              '((elpy-company-backend :with company-tabnine company-jedi)))))
          )
   :init
+  (setq elpy-modules (quote
+                      (elpy-module-company elpy-module-eldoc
+                                           elpy-module-highlight-indentation elpy-module-yasnippet
+                                           elpy-module-autodoc elpy-module-sane-defaults)))
+
+  (setq elpy-shell-starting-directory (quote current-directory))
   (elpy-enable)
   :config
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-                                        ; fix for MacOS, see https://github.com/jorgenschaefer/elpy/issues/1550
+  ;; (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  ;;                                       ; fix for MacOS, see https://github.com/jorgenschaefer/elpy/issues/1550
   (setq elpy-shell-echo-output nil)
   (setq elpy-rpc-python-command "python3")
   (setq elpy-rpc-timeout 2))
@@ -141,5 +160,7 @@
 ;;             (add-hook 'before-save-hook 'blacken-buffer)
 ;;             (set (make-local-variable 'compile-command)
 ;;                  (concat "python3 " (buffer-name)))))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; elpy_settings.el ends here
