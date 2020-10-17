@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Sat Oct 17 17:50:20 2020 (-0500)
+;; Last-Updated: Sat Oct 17 18:08:16 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1105
+;;     Update #: 1114
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -44,6 +44,19 @@
 
 (require 'use-package)
 (setq use-package-verbose t)
+
+(add-to-list 'load-path (expand-file-name "elisps" user-emacs-directory))
+(require 'startup_options)
+(require 'key_bindings)
+(require 'ivy_settings)
+(require 'flyspell_options)
+(require 'auto_header_options)
+(require 'polymode_settings)
+(require 'irony_company_settings)
+(require 'magit_settings)
+(require 'display_settings)
+(require 'doom_modeline_settings)
+(require 'font_options)
 
 ;; DO not close emacs accidentaly
 (setq kill-emacs-query-functions
@@ -89,31 +102,14 @@
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
-
-(add-to-list 'load-path (expand-file-name "elisps" user-emacs-directory))
-
-(require 'startup_options)
-(require  'key_bindings)
-;; (require 'org_settings)
-
-(use-package smex
-  :ensure t
-  :bind
-  (("M-x" . smex)
-   ("M-x" . smex-major-mode-commands))
-  :config
-  (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
-  (smex-initialize))
-
-(require 'ivy_settings)
-(require 'flyspell_options)
-(require 'auto_header_options)
-(require 'polymode_settings)
-(require 'irony_company_settings)
-(require 'magit_settings)
-(require 'display_settings)
-(require 'doom_modeline_settings)
-(require 'font_options)
+;; (use-package smex
+;;   :ensure t
+;;   :bind
+;;   (("M-x" . smex)
+;;    ("M-x" . smex-major-mode-commands))
+;;   :config
+;;   (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
+;;   (smex-initialize))
 
 ;; ;; Doxygen for emacs ;; copy doxymacs folder from site-lisp after brew install
 ;; (load "~/.emacs.d/elisps/doxymacs.el")
@@ -391,10 +387,10 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "pandoc"))
 
-(use-package dashboard
-  :ensure t
-  :config
-  (dashboard-setup-startup-hook))
+;; (use-package dashboard
+;;   :ensure t
+;;   :config
+;;   (dashboard-setup-startup-hook))
 
 ;; (use-package workgroups2
 ;;   :ensure t
