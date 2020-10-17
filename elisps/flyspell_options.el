@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:58:57 2016 (-0400)
 ;; Version:
-;; Last-Updated: Wed Oct  7 10:59:57 2020 (-0500)
+;; Last-Updated: Sat Oct 17 17:41:05 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 5
+;;     Update #: 6
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -29,14 +29,15 @@
   (setq-default ispell-list-command "list")
   ;;magit commit
   (add-hook 'text-mode-hook
-        (lambda ()
-          (flyspell-mode)))
+            (lambda ()
+              (flyspell-mode)))
   )
-
 
 
 ;; (add-hook 'c-mode-common-hook 'flyspell-prog-mode)
 ;; (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
+(provide 'flyspell_options)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; flyspell_options.el ends here

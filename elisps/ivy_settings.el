@@ -122,4 +122,4 @@
   :ensure t
   :after (ivy hydra))
 
-(provide 'init-ivy)
+(provide 'ivy_settings)

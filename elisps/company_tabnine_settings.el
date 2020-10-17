@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Thu Jun  4 19:27:40 2020 (-0500)
 ;; Version:
-;; Last-Updated: Wed Oct  7 10:36:02 2020 (-0500)
+;; Last-Updated: Sat Oct 17 17:51:51 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 6
+;;     Update #: 7
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -23,6 +23,6 @@
   ;; Number the candidates (use M-1, M-2 etc to select completions).
   (setq company-show-numbers t))
 
-
+(provide 'company_tabnine_settings)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; company_tabnine_settings.el ends here

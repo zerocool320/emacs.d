@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Mon May 18 11:29:52 2020 (-0500)
 ;; Version:
-;; Last-Updated: Wed Oct 14 18:20:50 2020 (-0500)
+;; Last-Updated: Sat Oct 17 17:45:18 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 6
+;;     Update #: 8
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -50,6 +50,7 @@
   :ensure t
   :bind (("s-g" . git-timemachine)))
 
+(provide 'magit_settings)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; magit_settings.el ends here

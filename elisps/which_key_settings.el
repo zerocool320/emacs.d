@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Mon May 18 13:45:49 2020 (-0500)
 ;; Version:
-;; Last-Updated: Mon May 18 13:52:13 2020 (-0500)
+;; Last-Updated: Sat Oct 17 17:50:55 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 18
+;;     Update #: 20
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -102,6 +102,8 @@
   (setq which-key-show-remaining-keys nil)
 
   )
+
+(provide 'which_key_settings)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; which_key_settings.el ends here

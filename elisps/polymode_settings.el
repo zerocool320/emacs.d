@@ -8,7 +8,7 @@
 ;; Version:
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 15
+;;     Update #: 16
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -34,6 +34,6 @@
   :init
   (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode)))
 
-
+(provide 'polymode_settings)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; polymode_settings.el ends here

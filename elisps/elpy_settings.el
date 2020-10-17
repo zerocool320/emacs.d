@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Wed Jun 17 15:36:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Thu Oct 15 21:43:15 2020 (-0500)
+;; Last-Updated: Sat Oct 17 17:52:19 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 64
+;;     Update #: 66
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -161,6 +161,8 @@
 ;;             (set (make-local-variable 'compile-command)
 ;;                  (concat "python3 " (buffer-name)))))
 
+
+(provide 'elpy_settings)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; elpy_settings.el ends here

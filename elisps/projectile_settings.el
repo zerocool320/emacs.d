@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Mon May 18 12:01:33 2020 (-0500)
 ;; Version:
-;; Last-Updated: Fri Sep 11 13:38:56 2020 (-0500)
+;; Last-Updated: Sat Oct 17 17:50:42 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 19
+;;     Update #: 20
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -28,6 +28,7 @@
   :config
   (counsel-projectile-mode 1))
 
+(provide 'projectile_settings)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; projectile_settings.el ends here

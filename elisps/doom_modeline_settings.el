@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Mon May 18 11:52:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Fri Oct  9 16:29:21 2020 (-0500)
+;; Last-Updated: Sat Oct 17 17:47:01 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 7
+;;     Update #: 8
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -176,6 +176,8 @@
   (setq doom-modeline-project-detection 'project)
   ;; or `find-in-project' if it's installed
   (setq doom-modeline-project-detection 'ffip))
+
+(provide 'doom_modeline_settings)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; doom-modeline.el ends here

@@ -8,7 +8,7 @@
 ;; Version:
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 74
+;;     Update #: 75
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -46,6 +46,6 @@
     ;; (set-frame-font "Hack Nerd Font Mono" nil t)
     (set-face-attribute 'default nil :height 160)))
 
-
+(provide 'font_options)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; font_options.el ends here

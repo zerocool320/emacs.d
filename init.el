@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Thu Oct 15 10:15:42 2020 (-0500)
+;; Last-Updated: Sat Oct 17 17:50:20 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1078
+;;     Update #: 1105
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -79,49 +79,41 @@
   (setq auto-compile-mode-line-counter t)
   (auto-compile-on-load-mode))
 
-(load "~/.emacs.d/elisps/startup_options")
-
 ;;Backup files
 (setq make-backup-files nil)
 
 ;;Yes and No
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;;Key bindings
-(load "~/.emacs.d/elisps/key_bindings")
+;;Temporary file management
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
-;;Settings, enable logging when tasks are complete
-;; (load "~/.emacs.d/elisps/org_settings")
 
-;;Smex
-;; (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
-;; (smex-initialize)
-;; (global-set-key (kbd "M-x") 'smex)
-;; (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(add-to-list 'load-path (expand-file-name "elisps" user-emacs-directory))
+
+(require 'startup_options)
+(require  'key_bindings)
+;; (require 'org_settings)
+
 (use-package smex
   :ensure t
   :bind
   (("M-x" . smex)
    ("M-x" . smex-major-mode-commands))
   :config
+  (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
   (smex-initialize))
 
-;; ;;Ido mode
-;; (load "~/.emacs.d/elisps/ido_settings")
-;; Ivy mode and swiper
-(load "~/.emacs.d/elisps/ivy_settings")
-
-;;Temporary file management
-(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
-
-;;Power lisp
-;; (load "~/.emacs.d/elisps/power_lisp")
-
-;; (load "~/.emacs.d/elisps/ac_misc")
-
-;;flyspell
-(load "~/.emacs.d/elisps/flyspell_options")
+(require 'ivy_settings)
+(require 'flyspell_options)
+(require 'auto_header_options)
+(require 'polymode_settings)
+(require 'irony_company_settings)
+(require 'magit_settings)
+(require 'display_settings)
+(require 'doom_modeline_settings)
+(require 'font_options)
 
 ;; ;; Doxygen for emacs ;; copy doxymacs folder from site-lisp after brew install
 ;; (load "~/.emacs.d/elisps/doxymacs.el")
@@ -133,13 +125,6 @@
 ;;      (doxymacs-font-lock)))
 ;; (add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
 
-;; Cscope
-;; (load "~/.emacs.d/elisps/cscope_settings")
-
-
-;;auto-header
-(load "~/.emacs.d/elisps/auto_header_options")
-
 (use-package multi-term
   :ensure t
   :config
@@ -147,18 +132,10 @@
   ;; Buggy needs fixing
   (setq multi-term-program "/bin/zsh"))
 
-
-
 ;;Replace all freakin' ^M chars in the current buffer
 (fset 'replace-ctrlms
       [escape ?< escape ?% ?\C-q ?\C-m return ?\C-q ?\C-j return ?!])
 (global-set-key "\C-c\C-m" 'replace-ctrlms)
-
-;; ploymode
-(load "~/.emacs.d/elisps/polymode_settings")
-
-;; Company and Irony for intellisense
-(load "~/.emacs.d/elisps/irony_company_settings")
 
 ;; Indentation settings
 ;;Indentation
@@ -183,9 +160,6 @@
   (set-face-background 'highlight-indent-guides-even-face "dimgray")
   (set-face-foreground 'highlight-indent-guides-character-face "dimgray"))
 
-;; Magit settings
-(load "~/.emacs.d/elisps/magit_settings")
-
 ;; multiple cursors
 (use-package multiple-cursors
   :ensure t
@@ -195,8 +169,6 @@
   (global-set-key (kbd "C->") 'mc/mark-next-like-this)
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
-
-
 
 ;; To re-compile all packages after major emacs udpate
 ;; Has resulted in error: “Symbol's function is void: cl-struct-define”
@@ -219,45 +191,21 @@
 (use-package all-the-icons
   :ensure t)
 
-(load "~/.emacs.d/elisps/display_settings")
-(load "~/.emacs.d/elisps/doom_modeline_settings.el")
-
-;; Set fonts need to be set after sml
-(load "~/.emacs.d/elisps/font_options")
-
-(setq auto-package-update-delete-old-versions t)
-
-;; projectile settings
-(load "~/.emacs.d/elisps/projectile_settings")
-
-;; which-key settings
-(load "~/.emacs.d/elisps/which_key_settings")
-
-;; rtags options
-(load "~/.emacs.d/elisps/rtags_options")
-
-;; company tabnine for autocomplete
-(load "~/.emacs.d/elisps/company_tabnine_settings")
+(require 'projectile_settings)
+(require 'which_key_settings)
+(require 'rtags_options)
+(require 'company_tabnine_settings)
+(require 'elpy_settings)
+(require 'company_jedi_settings)
 
 ;; enable remot dir locals
 (setq enable-remote-dir-locals t)
-
-;; enable elpy
-(load "~/.emacs.d/elisps/elpy_settings")
-
-;; switch mac key from meta
-;; (load "~/.emacs.d/elisps/mac-switch-meta")
-;; (mac-switch-meta)
 
 ;; move cursor by camelCase
 (global-subword-mode 1)
 
 (toggle-frame-fullscreen)
 (desktop-save-mode 1)
-
-
-
-(load "~/.emacs.d/elisps/company_jedi_settings")
 
 (use-package rainbow-delimiters
   :ensure t
@@ -327,7 +275,6 @@
          ([remap kill-whole-line] . crux-kill-whole-line)
          ("C-c s" . crux-ispell-word-then-abbrev)))
 
-
 (use-package diff-hl
   :ensure t
   :config
@@ -349,7 +296,6 @@
   :config
   (setq hl-todo-highlight-punctuation ":")
   (global-hl-todo-mode))
-
 
 ;; quit Emacs directly even if there are running processes
 (setq confirm-kill-processes nil)
@@ -445,11 +391,10 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "pandoc"))
 
-
-;; (use-package dashboard
-;;   :ensure t
-;;   :config
-;;   (dashboard-setup-startup-hook))
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
 
 ;; (use-package workgroups2
 ;;   :ensure t

@@ -8,7 +8,7 @@
 ;; Version:
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 26
+;;     Update #: 27
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -108,5 +108,8 @@
 ;;     (add-hook 'c-mode-hook #'setup-flycheck-rtags)
 ;;     (add-hook 'c++-mode-hook #'setup-flycheck-rtags)
 ;;     ))
+
+(provide 'rtags_options)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; rtags_options.el ends here

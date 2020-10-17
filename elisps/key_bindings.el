@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:48:31 2016 (-0400)
 ;; Version:
-;; Last-Updated: Wed Oct  7 12:18:23 2020 (-0500)
+;; Last-Updated: Sat Oct 17 17:36:25 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 10
+;;     Update #: 11
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -36,5 +36,6 @@
       use-dialog-box nil
       visible-bell t)
 
+(provide  'key_bindings)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; key_bindings.el ends here

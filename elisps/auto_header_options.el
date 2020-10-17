@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 19:07:33 2016 (-0400)
 ;; Version:
-;; Last-Updated: Fri May 15 15:21:40 2020 (-0500)
+;; Last-Updated: Sat Oct 17 17:42:38 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 7
+;;     Update #: 9
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -59,6 +59,6 @@
                          header-eof
                          ))
 
-
+(provide 'auto_header_options)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; auto_header_options.el ends here

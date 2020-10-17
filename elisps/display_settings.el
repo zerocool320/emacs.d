@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:52:50 2016 (-0400)
 ;; Version:
-;; Last-Updated: Wed Oct 14 18:01:00 2020 (-0500)
+;; Last-Updated: Sat Oct 17 17:46:51 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 74
+;;     Update #: 75
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -146,6 +146,8 @@
   :ensure t
   :config
   (volatile-highlights-mode +1))
+
+(provide 'display_settings)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; display_settings.el ends here

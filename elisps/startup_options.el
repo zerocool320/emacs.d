@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 08:45:33 2016 (-0400)
 ;; Version:
-;; Last-Updated: Sat Jun 11 08:46:10 2016 (-0400)
+;; Last-Updated: Sat Oct 17 17:35:25 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1
+;;     Update #: 2
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -33,6 +33,7 @@
 (transient-mark-mode t)
 (setq x-select-enable-clipboard t)
 
+(provide 'startup_options)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; startup_options.el ends here
