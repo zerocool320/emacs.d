@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Sat Oct 17 18:08:16 2020 (-0500)
+;; Last-Updated: Sat Oct 17 18:13:18 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1114
+;;     Update #: 1117
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -102,24 +102,12 @@
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
-;; (use-package smex
-;;   :ensure t
-;;   :bind
-;;   (("M-x" . smex)
-;;    ("M-x" . smex-major-mode-commands))
-;;   :config
-;;   (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
-;;   (smex-initialize))
-
-;; ;; Doxygen for emacs ;; copy doxymacs folder from site-lisp after brew install
-;; (load "~/.emacs.d/elisps/doxymacs.el")
-;; (load "~/.emacs.d/elisps/xml-parse.el")
-;; (require 'doxymacs)
-;; (add-hook 'c-mode-common-hook 'doxymacs-mode)
-;; (defun my-doxymacs-font-lock-hook ()
-;;  (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
-;;      (doxymacs-font-lock)))
-;; (add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+(require 'doxymacs)
+(add-hook 'c-mode-common-hook 'doxymacs-mode)
+(defun my-doxymacs-font-lock-hook ()
+  (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+      (doxymacs-font-lock)))
+(add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
 
 (use-package multi-term
   :ensure t
