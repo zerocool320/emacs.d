@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Sat Oct 17 18:58:01 2020 (-0500)
+;; Last-Updated: Tue Oct 20 18:25:55 2020 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1118
+;;     Update #: 1121
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -210,7 +210,7 @@
 
 (use-package format-all
   :ensure t
-  :pin melpa-stable
+  ;; :pin melpa-stable
   :config
   (add-hook 'prog-mode-hook 'format-all-mode))
 
@@ -397,6 +397,13 @@
 ;;   (setq wg-mode-line-decor-left-brace "["
 ;;         wg-mode-line-decor-right-brace "]"
 ;;         wg-mode-line-decor-divider ":"))
+
+;; Comment styles
+(add-hook 'c++-mode-hook (lambda () (setq comment-start "/*"
+                                          comment-end   "*/")))
+(add-hook 'cuda-mode-hook (lambda () (setq comment-start "/*"
+                                           comment-end   "*/")))
+;; (add-hook 'c-mode-hook (setq comment-style 'multi-line))
 
 ;; config changes made through the customize UI will be stored here
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
