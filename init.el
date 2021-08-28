@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Tue Oct 20 18:25:55 2020 (-0500)
+;; Last-Updated: Fri Aug 27 20:03:15 2021 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1121
+;;     Update #: 1144
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -129,6 +129,7 @@
 ;; meaning) of any files you load.
 (setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
 (setq-default tab-width 3)            ;; but maintain correct appearance
+(setq-default c-basic-offset 3)
 
 ;; (use-package indent-guide
 ;;   :ensure t
@@ -188,7 +189,7 @@
 ;; move cursor by camelCase
 (global-subword-mode 1)
 
-(toggle-frame-fullscreen)
+;; (toggle-frame-fullscreen)
 (desktop-save-mode 1)
 
 (use-package rainbow-delimiters
@@ -212,7 +213,8 @@
   :ensure t
   ;; :pin melpa-stable
   :config
-  (add-hook 'prog-mode-hook 'format-all-mode))
+  (add-hook 'prog-mode-hook 'format-all-mode)
+  (add-hook 'format-all-mode-hook 'format-all-ensure-formatter))
 
 (use-package whitespace
   :init
@@ -367,6 +369,25 @@
   (setq make-backup-files nil)
   (setq create-lockfiles nil))
 
+
+(use-package matlab
+  :ensure matlab-mode
+  :config
+  (setq matlab-shell-command "matlab")
+  (setq matlab-shell-command "/Applications/MATLAB_R2019a.app/bin/matlab")
+  (setq matlab-shell-command-switches (list "-softwareopengl -nodesktop -nosplash"))
+  (setq matlab-indent-function t)
+  (setq matlab-change-current-directory t)
+  ;; enable the matlab-mode for the .m files
+  (add-to-list 'auto-mode-alist '("\\.m$" . matlab-mode))
+  ;; Enable CEDET
+  (matlab-cedet-setup)
+  ;; Add the bin to load-path so that you can get the functions on CEDET
+  (add-to-list 'load-path "/Applications/MATLAB_R2019a.app/bin/")
+  ;; Enable flycheck for MATLAB
+  ;; (eval-after-load 'flycheck '(require 'flycheck-matlab-mlint))
+  )
+
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)
@@ -374,6 +395,36 @@
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "pandoc"))
+
+(use-package all-the-icons-ivy-rich
+  :ensure t
+  :init (all-the-icons-ivy-rich-mode 1)
+  :config
+  ;; Whether display the icons
+  (setq all-the-icons-ivy-rich-icon t)
+
+  ;; Whether display the colorful icons.
+  ;; It respects `all-the-icons-color-icons'.
+  (setq all-the-icons-ivy-rich-color-icon t)
+
+  ;; The icon size
+  (setq all-the-icons-ivy-rich-icon-size 1.0)
+
+  ;; Whether support project root
+  (setq all-the-icons-ivy-rich-project t)
+
+  ;; Definitions for ivy-rich transformers.
+  ;; See `ivy-rich-display-transformers-list' for details."
+  all-the-icons-ivy-rich-display-transformers-list
+
+  ;; Slow Rendering
+  ;; If you experience a slow down in performance when rendering multiple icons simultaneously,
+  ;; you can try setting the following variable
+  (setq inhibit-compacting-font-caches t))
+
+(use-package ivy-rich
+  :ensure t
+  :init (ivy-rich-mode 1))
 
 ;; (use-package dashboard
 ;;   :ensure t

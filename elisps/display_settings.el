@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:52:50 2016 (-0400)
 ;; Version:
-;; Last-Updated: Sat Oct 17 17:46:51 2020 (-0500)
+;; Last-Updated: Tue Feb  2 13:54:29 2021 (-0600)
 ;;           By: Barath Ramesh
-;;     Update #: 75
+;;     Update #: 80
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -48,6 +48,7 @@
   ;; (load-theme 'doom-tomorrow-night t)
   ;; (load-theme 'doom-gruvbox t)
   ;; (load-theme 'doom-dracula t)
+  ;; (load-theme 'doom-spacegrey t)
   (load-theme 'doom-zenburn t)
 
   ;; Enable flashing mode-line on errors

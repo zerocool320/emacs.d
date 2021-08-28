@@ -8,7 +8,7 @@
 ;; Version:
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 30
+;;     Update #: 33
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -112,7 +112,8 @@
   :ensure t
   :config
   (progn
-    (add-hook 'after-init-hook 'global-company-mode)
+    (global-company-mode 1)
+    ;; (add-hook 'after-init-hook 'global-company-mode)
     (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
     (setq company-idle-delay 0)))
 
