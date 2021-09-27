@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Fri Aug 27 20:03:15 2021 (-0500)
+;; Last-Updated: Wed Sep  8 21:02:50 2021 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1144
+;;     Update #: 1164
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -45,6 +45,22 @@
 (require 'use-package)
 (setq use-package-verbose t)
 
+
+(use-package flycheck
+  :ensure t
+  ;; :init (global-flycheck-mode)
+  )
+
+(use-package company
+  :ensure t
+  :config
+  (progn
+    (global-company-mode 1)
+    ;; (add-hook 'after-init-hook 'global-company-mode)
+    (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
+    (setq company-idle-delay 0)))
+
+
 (add-to-list 'load-path (expand-file-name "elisps" user-emacs-directory))
 (require 'startup_options)
 (require 'key_bindings)
@@ -52,13 +68,14 @@
 (require 'flyspell_options)
 (require 'auto_header_options)
 (require 'polymode_settings)
-(require 'irony_company_settings)
+;; (require 'irony_company_settings)
 (require 'magit_settings)
 (require 'display_settings)
 (require 'doom_modeline_settings)
 (require 'font_options)
+(require 'org_settings)
 
-;; DO not close emacs accidentaly
+;; DO not close emacs accidentally
 (setq kill-emacs-query-functions
       (list (function (lambda ()
                         (ding)
@@ -114,7 +131,10 @@
   :config
   ;; multi term
   ;; Buggy needs fixing
-  (setq multi-term-program "/bin/zsh"))
+  (setq multi-term-program "/bin/zsh")
+  ;; load aliases from zshrc
+  ;; (setq shell-command-switch "-ic")
+  )
 
 ;;Replace all freakin' ^M chars in the current buffer
 (fset 'replace-ctrlms
@@ -269,13 +289,14 @@
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
 
-(use-package undo-tree
-  :ensure t
-  :config
-  ;; autosave the undo-tree history
-  (setq undo-tree-history-directory-alist
-        `((".*" . ,temporary-file-directory)))
-  (setq undo-tree-auto-save-history t))
+;; (use-package undo-tree
+;;   :ensure t
+;;   :config
+;;   (global-undo-tree-mode +1)
+;;   ;; autosave the undo-tree history
+;;   (setq undo-tree-history-directory-alist
+;;         `((".*" . ,temporary-file-directory)))
+;;   (setq undo-tree-auto-save-history t))
 
 (use-package hl-todo
   :ensure t
@@ -456,7 +477,15 @@
                                            comment-end   "*/")))
 ;; (add-hook 'c-mode-hook (setq comment-style 'multi-line))
 
+(add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode))
+
 ;; config changes made through the customize UI will be stored here
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
+;; need to install mathjax to support math-preview
+(use-package math-preview
+  :ensure t
+  :custom (math-preview-command "/path/to/math-preview"))
+
 
 ;; init.el ends here

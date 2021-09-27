@@ -6,17 +6,28 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:49:25 2016 (-0400)
 ;; Version:
-;; Last-Updated: Sat Oct 17 17:37:50 2020 (-0500)
+;; Last-Updated: Wed Sep  8 13:10:30 2021 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 5
+;;     Update #: 24
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
 
+(use-package writegood-mode
+  :ensure t
+  :config
+  ;; (global-set-key "\C-cg" 'writegood-mode)
+  ;; (global-set-key "\C-c\C-gg" 'writegood-grade-level)
+  ;; (global-set-key "\C-c\C-ge" 'writegood-reading-ease)
+  )
+
 (setq org-log-done t
       org-todo-keywords '((sequence "TODO" "INPROGRESS" "DONE"))
-      org-todo-keyword-faces '(("INPROGRESS" . (:foreground "blue" :weight bold))))
+      org-todo-keyword-faces '(("INPROGRESS" . (:foreground "yellow4" :weight bold))
+                               ("TODO" . (:foreground "IndianRed" :weight bold))
+                               ("DONE" . (:foreground "LimeGreen" :weight bold))))
+
 (add-hook 'org-mode-hook
           (lambda ()
             (flyspell-mode)))
@@ -27,10 +38,11 @@
 ;;org-agenda
 (global-set-key (kbd "C-c a") 'org-agenda)
 (setq org-agenda-show-log t
-      org-agenda-todo-ignore-scheduled t
-      org-agenda-todo-ignore-deadlines t)
-(setq org-agenda-files (list "~/Dropbox/org/personal.org"
-                             "~/Dropbox/org/groupon.org"))
+      ;; org-agenda-todo-ignore-scheduled t
+      ;; org-agenda-todo-ignore-deadlines t
+      )
+;; (setq org-agenda-files (list "~/Dropbox/org/personal.org"
+;;                              "~/Dropbox/org/groupon.org"))
 
 ;;org-habit
 (require 'org)
@@ -101,9 +113,7 @@
       '(("t" "todo" entry    (file (capture-report-date-file  "~/path/path/name"))
          "* TODO [#A] %?")))
 
-(setq org-agenda-files (list "~/org/mmalib.org"
-                             "~/org/sys_admin.org"
-                             "~/org/misc.org"))
+(setq org-agenda-files '("~/org"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -119,11 +129,11 @@
 (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
 ;;don't give awarning colour to tasks with impending deadlines
 ;;if they are scheduled to be done
-(setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
+;; (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
 ;;don't show tasks that are scheduled or have deadlines in the
 ;;normal todo list
-(setq org-agenda-todo-ignore-deadlines (quote all))
-(setq org-agenda-todo-ignore-scheduled (quote all))
+;; (setq org-agenda-todo-ignore-deadlines (quote all))
+;; (setq org-agenda-todo-ignore-scheduled (quote all))
 ;;sort tasks in order of when they are due and then by priority
 (setq org-agenda-sorting-strategy
       (quote

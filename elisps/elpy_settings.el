@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Wed Jun 17 15:36:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Sat Oct 17 17:52:19 2020 (-0500)
+;; Last-Updated: Mon Sep 13 08:44:18 2021 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 66
+;;     Update #: 67
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -29,6 +29,7 @@
 
 (use-package elpy
   :ensure t
+  :pin melpa-stable
   :bind
   (:map elpy-mode-map
         ("C-M-n" . elpy-nav-forward-block)

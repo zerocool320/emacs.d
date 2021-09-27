@@ -8,7 +8,7 @@
 ;; Version:
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 33
+;;     Update #: 34
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -108,14 +108,6 @@
   (progn
     (add-hook 'irony-mode-hook #'irony-eldoc)))
 
-(use-package company
-  :ensure t
-  :config
-  (progn
-    (global-company-mode 1)
-    ;; (add-hook 'after-init-hook 'global-company-mode)
-    (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
-    (setq company-idle-delay 0)))
 
 ;; (use-package company-irony-c-headers
 ;;   :config
