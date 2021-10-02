@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Wed Sep  8 21:02:50 2021 (-0500)
+;; Last-Updated: Sat Oct  2 13:20:09 2021 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1164
+;;     Update #: 1165
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -221,6 +221,9 @@
   :ensure t)
 
 (use-package restart-emacs
+  :ensure t)
+
+(use-package smex
   :ensure t)
 
 (use-package smartparens
