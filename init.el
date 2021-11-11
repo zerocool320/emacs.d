@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Sat Oct  2 13:20:09 2021 (-0500)
+;; Last-Updated: Sat Oct  9 10:46:40 2021 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1165
+;;     Update #: 1167
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -490,5 +490,9 @@
   :ensure t
   :custom (math-preview-command "/path/to/math-preview"))
 
+(use-package blackout
+  :ensure t
+  :config
+  (blackout 'auto-fill-mode))
 
 ;; init.el ends here
