@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Mon May 18 11:52:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Sat Oct 17 17:47:01 2020 (-0500)
+;; Last-Updated: Thu Nov 18 01:32:26 2021 (-0600)
 ;;           By: Barath Ramesh
-;;     Update #: 8
+;;     Update #: 10
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -60,7 +60,7 @@
   ;; If you are experiencing the laggy issue, especially while editing remote files
   ;; with tramp, please try `file-name' style.
   ;; Please refer to https://github.com/bbatsov/projectile/issues/657.
-  (setq doom-modeline-buffer-file-name-style 'auto)
+  (setq doom-modeline-buffer-file-name-style 'buffer-name)
 
   ;; Whether display icons in the mode-line. Respects `all-the-icons-color-icons'.
   ;; While using the server mode in GUI, should set the value explicitly.
