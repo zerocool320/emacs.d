@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Wed Jun 17 15:36:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Mon Sep 13 08:44:18 2021 (-0500)
+;; Last-Updated: Mon Jan 24 18:13:08 2022 (-0600)
 ;;           By: Barath Ramesh
-;;     Update #: 67
+;;     Update #: 70
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -42,7 +42,8 @@
   :init
   (setq elpy-modules (quote
                       (elpy-module-company elpy-module-eldoc
-                                           elpy-module-highlight-indentation elpy-module-yasnippet
+                                           ;; elpy-module-highlight-indentation
+                                           elpy-module-yasnippet
                                            elpy-module-autodoc elpy-module-sane-defaults)))
 
   (setq elpy-shell-starting-directory (quote current-directory))

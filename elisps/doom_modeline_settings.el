@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Mon May 18 11:52:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Thu Nov 18 01:32:26 2021 (-0600)
+;; Last-Updated: Wed Dec 29 11:32:43 2021 (-0600)
 ;;           By: Barath Ramesh
-;;     Update #: 10
+;;     Update #: 13
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -18,7 +18,7 @@
 
 (use-package doom-modeline
   :ensure t
-  :pin melpa-stable
+  ;; :pin melpa-stable
   :init (doom-modeline-mode 1)
   :config
   ;; How tall the mode-line should be. It's only respected in GUI.

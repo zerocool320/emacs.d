@@ -8,7 +8,7 @@
 ;; Version:
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 31
+;;     Update #: 35
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -18,6 +18,7 @@
 ;; From: https://martinsosic.com/development/emacs/2017/12/09/emacs-cpp-ide.html
 
 (use-package rtags
+  :ensure t
   :config
   (progn
     ;; ( setq rtags-completions-enabled t
@@ -34,6 +35,17 @@
     (rtags-enable-standard-keybindings)
 
     (setq rtags-use-helm t)
+    (setq rtags-autostart-diagnostics t)
+    (setq rtags-tramp-enabled t)
+
+;;;; This is similar to setting $PATH env var, but for TRAMP
+    ;; (add-to-list 'tramp-remote-path "/home/ubuntu/.emacs.d/rtags/bin")
+
+;;;; This is the same as --socket-address to rc
+    ;; (setq rtags-socket-address "my-remote-machine:8998")
+
+;;;; Gives you an unfair advantage
+    (setq rtags-rc-log-enabled t)
 
     ;; Shutdown rdm when leaving emacs.
     (add-hook 'kill-emacs-hook 'rtags-quit-rdm)

@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Mon May 18 11:29:52 2020 (-0500)
 ;; Version:
-;; Last-Updated: Sat Oct 17 17:45:18 2020 (-0500)
+;; Last-Updated: Fri Jun 17 09:40:53 2022 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 8
+;;     Update #: 19
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -16,8 +16,19 @@
 
 ;; From https://github.com/howardabrams/dot-files/blob/master/emacs.org
 
+(use-package with-editor
+  :ensure t
+  ;; :pin melpa-stable
+  )
+
+(use-package magit-section
+  :ensure t
+  ;; :pin melpa-stable
+  )
+
 (use-package magit
   :ensure t
+  ;; :pin melpa-stable
   :commands magit-status magit-blame
   :init
   (defadvice magit-status (around magit-fullscreen activate)

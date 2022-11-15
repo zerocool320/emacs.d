@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Sat Oct  9 10:46:40 2021 (-0500)
+;; Last-Updated: Mon Mar 28 13:35:49 2022 (-0500)
 ;;           By: Barath Ramesh
-;;     Update #: 1167
+;;     Update #: 1171
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -53,6 +53,7 @@
 
 (use-package company
   :ensure t
+  :pin melpa-stable
   :config
   (progn
     (global-company-mode 1)
@@ -217,8 +218,8 @@
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-(use-package rainbow-mode
-  :ensure t)
+;; (use-package rainbow-mode
+;;   :ensure t)
 
 (use-package restart-emacs
   :ensure t)
