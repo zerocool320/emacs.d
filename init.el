@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Mon Mar 28 13:35:49 2022 (-0500)
+;; Last-Updated: Tue Dec 13 22:54:56 2022 (-0600)
 ;;           By: Barath Ramesh
-;;     Update #: 1171
+;;     Update #: 1201
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -159,12 +159,15 @@
   :ensure t
   :config
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-  (if (equal system-type 'darwin)
-      (setq highlight-indent-guides-method 'bitmap)
-    (setq highlight-indent-guides-method 'character))
-  (set-face-background 'highlight-indent-guides-odd-face "darkgray")
-  (set-face-background 'highlight-indent-guides-even-face "dimgray")
-  (set-face-foreground 'highlight-indent-guides-character-face "dimgray"))
+  ;; (if (equal system-type 'darwin)
+  ;;     (setq highlight-indent-guides-method 'bitmap)
+  ;;   (setq highlight-indent-guides-method 'character))
+  (set-face-background 'highlight-indent-guides-top-odd-face "darkgray")
+  (set-face-background 'highlight-indent-guides-top-even-face "dimgray")
+  (set-face-foreground 'highlight-indent-guides-character-face "dimgray")
+  (setq highlight-indent-guides-responsive 'top)
+  (setq highlight-indent-guides-method 'character)
+  )
 
 ;; multiple cursors
 (use-package multiple-cursors
@@ -200,7 +203,7 @@
 (require 'projectile_settings)
 (require 'which_key_settings)
 (require 'rtags_options)
-(require 'company_tabnine_settings)
+;; (require 'company_tabnine_settings)
 (require 'elpy_settings)
 (require 'company_jedi_settings)
 

@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Wed Jun 17 15:36:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Mon Jan 24 18:13:08 2022 (-0600)
+;; Last-Updated: Wed Dec  7 21:36:11 2022 (-0600)
 ;;           By: Barath Ramesh
-;;     Update #: 70
+;;     Update #: 73
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -37,7 +37,7 @@
   :hook ((elpy-mode . flycheck-mode)
          (elpy-mode . (lambda ()
                         (set (make-local-variable 'company-backends)
-                             '((elpy-company-backend :with company-tabnine company-jedi)))))
+                             '((elpy-company-backend :with company-jedi )))))
          )
   :init
   (setq elpy-modules (quote
@@ -124,13 +124,13 @@
 (use-package python
   :hook (inferior-python-mode . fix-python-password-entry)
   :config
-  (setq python-shell-interpreter "jupyter-console"
-        python-shell-interpreter-args "--simple-prompt"
-        python-shell-prompt-detect-failure-warning nil)
-  (add-to-list 'python-shell-completion-native-disabled-interpreters
-               "jupyter-console")
-  (add-to-list 'python-shell-completion-native-disabled-interpreters
-               "jupyter")
+  ;; (setq python-shell-interpreter "jupyter-console"
+  ;;       python-shell-interpreter-args "--simple-prompt"
+  ;;       python-shell-prompt-detect-failure-warning nil)
+  ;; (add-to-list 'python-shell-completion-native-disabled-interpreters
+  ;;              "jupyter-console")
+  ;; (add-to-list 'python-shell-completion-native-disabled-interpreters
+  ;;              "jupyter")
   (defun fix-python-password-entry ()
     (push
      'comint-watch-for-password-prompt comint-output-filter-functions))

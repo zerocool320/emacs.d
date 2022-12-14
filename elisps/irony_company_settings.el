@@ -8,7 +8,7 @@
 ;; Version:
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 34
+;;     Update #: 42
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -45,33 +45,34 @@
 ;; (add-hook 'irony-mode-hook 'my-ac-irony-setup)
 
 
-;; ;; Company mode
-;; (global-company-mode 1)
-;; (setq company-minimum-prefix-length 1)
-;; (setq company-selection-wrap-around t)
-;; ;; (eval-after-load 'company
-;; ;;   '(progn
-;; ;;      (define-key company-active-map (kbd "<return>") nil)
-;; ;;      (define-key company-active-map (kbd "RET") nil)
-;; ;;      (define-key company-active-map (kbd "C-SPC") 'company-complete-selection)
-;; ;;      (define-key company-active-map (kbd "TAB") 'company-select-next)
-;; ;;      (define-key company-active-map [tab] 'company-select-next)))
-
+;; Company mode
+(global-company-mode 1)
+(setq company-minimum-prefix-length 1)
+(setq company-selection-wrap-around t)
 ;; (eval-after-load 'company
-;;   '(add-to-list 'company-backends 'company-irony))
+;;   '(progn
+;;      (define-key company-active-map (kbd "<return>") nil)
+;;      (define-key company-active-map (kbd "RET") nil)
+;;      (define-key company-active-map (kbd "C-SPC") 'company-complete-selection)
+;;      (define-key company-active-map (kbd "TAB") 'company-select-next)
+;;      (define-key company-active-map [tab] 'company-select-next)))
 
-;; ;; (setq company-prescient-mode t)
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+
+;; (setq company-prescient-mode t)
 
 ;; (require 'company-irony-c-headers)
-;; ;; Load with `irony-mode` as a grouped backend
-;; (eval-after-load 'company
-;;   '(add-to-list
-;;     'company-backends '(company-irony-c-headers company-irony)))
+;; Load with `irony-mode` as a grouped backend
+(eval-after-load 'company
+  '(add-to-list
+    'company-backends '(company-irony-c-headers company-irony)))
 
 ;; from https://martinsosic.com/development/emacs/2017/12/09/emacs-cpp-ide.html#company
 
 (use-package irony
   :ensure t
+  :pin melpa-stable
   :config
   (progn
     ;; If irony server was never installed, install it.
@@ -110,11 +111,12 @@
 
 
 ;; (use-package company-irony-c-headers
+;;   :ensure t
 ;;   :config
 ;;   (progn
 ;;     (eval-after-load 'company
 ;;       '(add-to-list
-;;     'company-backends '(company-irony-c-headers company-irony)))))
+;;         'company-backends '(company-irony-c-headers company-irony)))))
 
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))

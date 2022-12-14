@@ -8,7 +8,7 @@
 ;; Version:
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 35
+;;     Update #: 51
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -35,7 +35,7 @@
     (rtags-enable-standard-keybindings)
 
     (setq rtags-use-helm t)
-    (setq rtags-autostart-diagnostics t)
+    ;; (setq rtags-autostart-diagnostics t)
     (setq rtags-tramp-enabled t)
 
 ;;;; This is similar to setting $PATH env var, but for TRAMP
@@ -60,29 +60,16 @@
 
 ;; Use rtags for auto-completion.
 (use-package company-rtags
+  :ensure t
   :config
   (progn
-    (setq rtags-autostart-diagnostics t)
-    (rtags-diagnostics)
+    ;; (setq rtags-autostart-diagnostics t)
+    ;; (rtags-diagnostics)
     (setq rtags-completions-enabled t)
     (push 'company-rtags company-backends)
     ))
 
 ;; Live code checking.
-;; (use-package flycheck-rtags
-;;   :config
-;;   (progn
-;;     ;; ensure that we use only rtags checking
-;;     ;; https://github.com/Andersbakken/rtags#optional-1
-;;     (defun setup-flycheck-rtags ()
-;;       (flycheck-select-checker 'rtags)
-;;       (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
-;;       (setq-local flycheck-check-syntax-automatically nil)
-;;       (rtags-set-periodic-reparse-timeout 2.0)  ;; Run flycheck 2 seconds after being idle.
-;;       )
-;;     (add-hook 'c-mode-hook #'setup-flycheck-rtags)
-;;     (add-hook 'c++-mode-hook #'setup-flycheck-rtags)
-;;     ))
 
 ;; ensure that we use only rtags checking
 ;; https://github.com/Andersbakken/rtags#optional-1
@@ -93,6 +80,22 @@
 ;;   (setq-local flycheck-highlighting-mode nil)
 ;;   (setq-local flycheck-check-syntax-automatically nil)
 ;;   )
+
+(use-package flycheck-rtags
+  :ensure t
+  :config
+  (progn
+    ;; ensure that we use only rtags checking
+    ;; https://github.com/Andersbakken/rtags#optional-1
+    (defun setup-flycheck-rtags ()
+      (flycheck-select-checker 'rtags)
+      (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
+      (setq-local flycheck-check-syntax-automatically nil)
+      (rtags-set-periodic-reparse-timeout 2.0)  ;; Run flycheck 2 seconds after being idle.
+      )
+    (add-hook 'c-mode-hook #'setup-flycheck-rtags)
+    (add-hook 'c++-mode-hook #'setup-flycheck-rtags)
+    ))
 
 ;; ;; only run this if rtags is installed
 ;; (when (require 'rtags nil :noerror)
