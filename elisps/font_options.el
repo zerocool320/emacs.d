@@ -8,7 +8,7 @@
 ;; Version:
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 75
+;;     Update #: 88
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -31,20 +31,9 @@
 ;;       :size 12.4
 ;;       :weight 'normal))))
 
-;; (set-frame-font "DejaVu Sans Mono" nil t)
-;; (set-face-attribute 'default nil :height 160)
-
-(if (equal system-type 'darwin)
-    (progn
-      (set-frame-font "Monaco" nil t)
-      ;; (set-frame-font "MesloLGS Nerd Font Mono" nil t)
-      ;; (set-frame-font "Hack Nerd Font Mono" nil t)
-      (set-face-attribute 'default nil :height 180))
-  (progn
-    (set-frame-font "Ubuntu Mono" nil t)
-    ;; (set-frame-font "MesloLGS Nerd Font Mono" nil t)
-    ;; (set-frame-font "Hack Nerd Font Mono" nil t)
-    (set-face-attribute 'default nil :height 160)))
+(set-frame-font "DejaVu Sans Mono" nil t)
+(set-face-attribute 'default nil :height 380)
+;; (set-frame-font "font-name:pixelsize=24")
 
 (provide 'font_options)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

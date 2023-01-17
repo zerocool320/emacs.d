@@ -8,7 +8,7 @@
 ;; Version:
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 51
+;;     Update #: 44
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -35,7 +35,7 @@
     (rtags-enable-standard-keybindings)
 
     (setq rtags-use-helm t)
-    ;; (setq rtags-autostart-diagnostics t)
+    (setq rtags-autostart-diagnostics t)
     (setq rtags-tramp-enabled t)
 
 ;;;; This is similar to setting $PATH env var, but for TRAMP
@@ -63,8 +63,8 @@
   :ensure t
   :config
   (progn
-    ;; (setq rtags-autostart-diagnostics t)
-    ;; (rtags-diagnostics)
+    (setq rtags-autostart-diagnostics t)
+    (rtags-diagnostics)
     (setq rtags-completions-enabled t)
     (push 'company-rtags company-backends)
     ))
@@ -73,13 +73,13 @@
 
 ;; ensure that we use only rtags checking
 ;; https://github.com/Andersbakken/rtags#optional-1
-;; (defun setup-flycheck-rtags ()
-;;   (interactive)
-;;   (flycheck-select-checker 'rtags)
-;;   ;; RTags creates more accurate overlays.
-;;   (setq-local flycheck-highlighting-mode nil)
-;;   (setq-local flycheck-check-syntax-automatically nil)
-;;   )
+(defun setup-flycheck-rtags ()
+  (interactive)
+  (flycheck-select-checker 'rtags)
+  ;; RTags creates more accurate overlays.
+  (setq-local flycheck-highlighting-mode nil)
+  (setq-local flycheck-check-syntax-automatically nil)
+  )
 
 (use-package flycheck-rtags
   :ensure t

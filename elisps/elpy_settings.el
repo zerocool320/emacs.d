@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Wed Jun 17 15:36:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Wed Dec  7 21:36:11 2022 (-0600)
-;;           By: Barath Ramesh
-;;     Update #: 73
+;; Last-Updated: Mon Dec 19 05:34:24 2022 (+0000)
+;;           By: a0232371
+;;     Update #: 78
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -29,7 +29,7 @@
 
 (use-package elpy
   :ensure t
-  :pin melpa-stable
+  ;; :pin melpa-stable
   :bind
   (:map elpy-mode-map
         ("C-M-n" . elpy-nav-forward-block)
@@ -124,11 +124,11 @@
 (use-package python
   :hook (inferior-python-mode . fix-python-password-entry)
   :config
-  ;; (setq python-shell-interpreter "jupyter-console"
-  ;;       python-shell-interpreter-args "--simple-prompt"
-  ;;       python-shell-prompt-detect-failure-warning nil)
-  ;; (add-to-list 'python-shell-completion-native-disabled-interpreters
-  ;;              "jupyter-console")
+  (setq python-shell-interpreter "jupyter-console"
+        python-shell-interpreter-args "--simple-prompt"
+        python-shell-prompt-detect-failure-warning nil)
+  (add-to-list 'python-shell-completion-native-disabled-interpreters
+               "jupyter-console")
   ;; (add-to-list 'python-shell-completion-native-disabled-interpreters
   ;;              "jupyter")
   (defun fix-python-password-entry ()
@@ -162,6 +162,11 @@
 ;;             (add-hook 'before-save-hook 'blacken-buffer)
 ;;             (set (make-local-variable 'compile-command)
 ;;                  (concat "python3 " (buffer-name)))))
+
+;; Make C-c C-c behave like C-u C-c C-c in Python mode
+;; (require 'python)
+;; (define-key python-mode-map (kbd "C-c C-c")
+;;   (lambda () (interactive) (python-shell-send-buffer t)))
 
 
 (provide 'elpy_settings)

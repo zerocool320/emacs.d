@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Tue Dec 13 22:54:56 2022 (-0600)
-;;           By: Barath Ramesh
-;;     Update #: 1201
+;; Last-Updated: Tue Jan  3 11:10:09 2023 (-0600)
+;;           By: a0232371
+;;     Update #: 1213
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -51,6 +51,7 @@
   ;; :init (global-flycheck-mode)
   )
 
+
 (use-package company
   :ensure t
   :pin melpa-stable
@@ -59,6 +60,11 @@
     (global-company-mode 1)
     ;; (add-hook 'after-init-hook 'global-company-mode)
     (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
+    (define-key company-active-map (kbd "C-n") 'company-select-next)
+    (define-key company-active-map (kbd "C-p") 'company-select-previous)
+    (define-key company-search-map (kbd "C-n") 'company-select-next)
+    (define-key company-search-map (kbd "C-p") 'company-select-previous)
+    (define-key company-search-map (kbd "C-t") 'company-search-toggle-filtering)
     (setq company-idle-delay 0)))
 
 
@@ -73,7 +79,7 @@
 (require 'magit_settings)
 (require 'display_settings)
 (require 'doom_modeline_settings)
-(require 'font_options)
+
 (require 'org_settings)
 
 ;; DO not close emacs accidentally
@@ -165,6 +171,7 @@
   (set-face-background 'highlight-indent-guides-top-odd-face "darkgray")
   (set-face-background 'highlight-indent-guides-top-even-face "dimgray")
   (set-face-foreground 'highlight-indent-guides-character-face "dimgray")
+  ;; (setq highlight-indent-guides-method 'bitmap)
   (setq highlight-indent-guides-responsive 'top)
   (setq highlight-indent-guides-method 'character)
   )
@@ -499,4 +506,5 @@
   :config
   (blackout 'auto-fill-mode))
 
+(require 'font_options)
 ;; init.el ends here

@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:52:50 2016 (-0400)
 ;; Version:
-;; Last-Updated: Wed Dec 29 14:03:37 2021 (-0600)
-;;           By: Barath Ramesh
-;;     Update #: 94
+;; Last-Updated: Wed Dec 28 14:16:45 2022 (-0600)
+;;           By: a0232371
+;;     Update #: 96
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -51,19 +51,19 @@
   ;; (load-theme 'doom-tomorrow-night t)
   ;; (load-theme 'doom-dracula t)
   ;; (load-theme 'doom-spacegrey t)
-   (load-theme 'doom-zenburn t)
+  (load-theme 'doom-zenburn t)
 
-   ;; Enable flashing mode-line on errors
-   ;; (doom-themes-visual-bell-config)
+  ;; Enable flashing mode-line on errors
+  ;; (doom-themes-visual-bell-config)
 
-   ;; Enable custom neotree theme (all-the-icons must be installed!)
-   (doom-themes-neotree-config)
-   ;; or for treemacs users
-   (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-   (doom-themes-treemacs-config)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+  (doom-themes-treemacs-config)
 
-   ;; Corrects (and improves) org-mode's native fontification.
-   (doom-themes-org-config))
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
 ;; Add proper word wrapping
 (global-visual-line-mode t)

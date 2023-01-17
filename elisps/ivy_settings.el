@@ -80,20 +80,20 @@
   ;;       '((counsel-M-x . ivy-display-function-lv)
   ;;         (ivy-completion-in-region . ivy-display-function-overlay)))
 
-  (custom-set-faces
-   '(swiper-minibuffer-match-face-1
-     ((t :background "#dddddd")))
-   '(swiper-minibuffer-match-face-2
-     ((t :background "#bbbbbb" :weight bold)))
-   '(swiper-minibuffer-match-face-3
-     ((t :background "#bbbbff" :weight bold)))
-   '(swiper-minibuffer-match-face-4
-     ((t :background "#ffbbff" :weight bold))))
+  ;; (custom-set-faces
+  ;;  '(swiper-minibuffer-match-face-1
+  ;;    ((t :background "#dddddd")))
+  ;;  '(swiper-minibuffer-match-face-2
+  ;;    ((t :background "#bbbbbb" :weight bold)))
+  ;;  '(swiper-minibuffer-match-face-3
+  ;;    ((t :background "#bbbbff" :weight bold)))
+  ;;  '(swiper-minibuffer-match-face-4
+  ;;    ((t :background "#ffbbff" :weight bold))))
 
   (custom-set-faces
    '(ivy-current-match
-     ((((class color) (background dark))
-       :background "DimGrey" :foreground nil))))
+     ((((class color) (background light))
+       :background "dimGray" :foreground nil))))
   )
 
 

@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Mon May 18 11:29:52 2020 (-0500)
 ;; Version:
-;; Last-Updated: Fri Jun 17 09:40:53 2022 (-0500)
-;;           By: Barath Ramesh
-;;     Update #: 19
+;; Last-Updated: Mon Dec 19 04:38:15 2022 (+0000)
+;;           By: a0232371
+;;     Update #: 24
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -16,15 +16,15 @@
 
 ;; From https://github.com/howardabrams/dot-files/blob/master/emacs.org
 
-(use-package with-editor
-  :ensure t
-  ;; :pin melpa-stable
-  )
+;; (use-package with-editor
+;;   :ensure t
+;;   ;; :pin melpa-stable
+;;   )
 
-(use-package magit-section
-  :ensure t
-  ;; :pin melpa-stable
-  )
+;; (use-package magit-section
+;;   :ensure t
+;;   :pin melpa-stable
+;;   )
 
 (use-package magit
   :ensure t
