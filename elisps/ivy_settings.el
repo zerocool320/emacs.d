@@ -80,20 +80,20 @@
   ;;       '((counsel-M-x . ivy-display-function-lv)
   ;;         (ivy-completion-in-region . ivy-display-function-overlay)))
 
-  ;; (custom-set-faces
-  ;;  '(swiper-minibuffer-match-face-1
-  ;;    ((t :background "#dddddd")))
-  ;;  '(swiper-minibuffer-match-face-2
-  ;;    ((t :background "#bbbbbb" :weight bold)))
-  ;;  '(swiper-minibuffer-match-face-3
-  ;;    ((t :background "#bbbbff" :weight bold)))
-  ;;  '(swiper-minibuffer-match-face-4
-  ;;    ((t :background "#ffbbff" :weight bold))))
+  (custom-set-faces
+   '(swiper-minibuffer-match-face-1
+     ((t :background "#dddddd")))
+   '(swiper-minibuffer-match-face-2
+     ((t :background "#bbbbbb" :weight bold)))
+   '(swiper-minibuffer-match-face-3
+     ((t :background "#bbbbff" :weight bold)))
+   '(swiper-minibuffer-match-face-4
+     ((t :background "#ffbbff" :weight bold))))
 
   (custom-set-faces
    '(ivy-current-match
-     ((((class color) (background light))
-       :background "dimGray" :foreground nil))))
+     ((((class color) (background dark))
+       :background "DimGrey" :foreground nil))))
   )
 
 
@@ -104,6 +104,7 @@
 (use-package counsel
   :ensure t
   :config
+  (counsel-mode 1)
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
   (global-set-key (kbd "<f1> f") 'counsel-describe-function)
@@ -121,5 +122,11 @@
 (use-package ivy-hydra
   :ensure t
   :after (ivy hydra))
+
+
+(use-package ivy-rich
+  :after ivy
+  :init
+  (ivy-rich-mode 1))
 
 (provide 'ivy_settings)

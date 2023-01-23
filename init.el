@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Fri Jul 17 15:33:56 2015 (-0400)
 ;; Version:
-;; Last-Updated: Tue Jan  3 11:10:09 2023 (-0600)
+;; Last-Updated: Sun Jan 22 18:15:54 2023 (-0600)
 ;;           By: a0232371
-;;     Update #: 1213
+;;     Update #: 1245
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -54,7 +54,9 @@
 
 (use-package company
   :ensure t
-  :pin melpa-stable
+  ;; :pin melpa-stable
+  :after lsp-mode
+  :hook (lsp-mode . company-mode)
   :config
   (progn
     (global-company-mode 1)
@@ -67,6 +69,9 @@
     (define-key company-search-map (kbd "C-t") 'company-search-toggle-filtering)
     (setq company-idle-delay 0)))
 
+;; (use-package company-box
+;;   :ensure t
+;;   :hook (company-mode . company-box-mode))
 
 (add-to-list 'load-path (expand-file-name "elisps" user-emacs-directory))
 (require 'startup_options)
@@ -78,7 +83,7 @@
 ;; (require 'irony_company_settings)
 (require 'magit_settings)
 (require 'display_settings)
-(require 'doom_modeline_settings)
+
 
 (require 'org_settings)
 
@@ -457,32 +462,32 @@
   ;; you can try setting the following variable
   (setq inhibit-compacting-font-caches t))
 
-(use-package ivy-rich
-  :ensure t
-  :init (ivy-rich-mode 1))
+;; (use-package ivy-rich
+;;   :ensure t
+;;   :init (ivy-rich-mode 1))
 
 ;; (use-package dashboard
 ;;   :ensure t
 ;;   :config
 ;;   (dashboard-setup-startup-hook))
 
-;; (use-package workgroups2
-;;   :ensure t
-;;   :config
-;;   ;; Change workgroups session file
-;;   (setq wg-session-file "~/.emacs.d/.emacs_workgroups")
+(use-package workgroups2
+  :ensure t
+  :config
+  ;; Change workgroups session file
+  (setq wg-session-file "~/.emacs.d/.emacs_workgroups")
 
-;;   ;; What to do on Emacs exit / workgroups-mode exit?
-;;   (setq wg-emacs-exit-save-behavior           'save)
-;;   (setq wg-workgroups-mode-exit-save-behavior 'save)
+  ;; What to do on Emacs exit / workgroups-mode exit?
+  (setq wg-emacs-exit-save-behavior           'save)
+  (setq wg-workgroups-mode-exit-save-behavior 'save)
 
-;;   ;; Mode Line changes
-;;   ;; Display workgroups in Mode Line?
-;;   (setq wg-mode-line-display-on t)
-;;   (setq wg-flag-modified t)
-;;   (setq wg-mode-line-decor-left-brace "["
-;;         wg-mode-line-decor-right-brace "]"
-;;         wg-mode-line-decor-divider ":"))
+  ;; Mode Line changes
+  ;; Display workgroups in Mode Line?
+  (setq wg-mode-line-display-on t)
+  (setq wg-flag-modified t)
+  (setq wg-mode-line-decor-left-brace "["
+        wg-mode-line-decor-right-brace "]"
+        wg-mode-line-decor-divider ":"))
 
 ;; Comment styles
 (add-hook 'c++-mode-hook (lambda () (setq comment-start "/*"
@@ -507,4 +512,57 @@
   (blackout 'auto-fill-mode))
 
 (require 'font_options)
+
+
+(use-package vterm
+  :ensure t
+  ;; :pin melpa-stable
+  :commands vterm
+  :config
+  (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *")  ;; Set this to match your custom shell prompt
+  (setq vterm-shell "zsh")                       ;; Set this to customize the shell to launch
+  (setq vterm-max-scrollback 10000))
+
+(use-package multi-vterm :ensure t)
+(use-package vterm-toggle :ensure t)
+
+(use-package term
+  :commands term
+  :config
+  (setq explicit-shell-file-name "zsh") ;; Change this to zsh, etc
+  ;;(setq explicit-zsh-args '())         ;; Use 'explicit-<shell>-args for shell-specific args
+
+  ;; Match the default Bash shell prompt.  Update this if you have a custom prompt
+  (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *"))
+
+(use-package eterm-256color
+  :ensure t
+  :hook (term-mode . eterm-256color-mode))
+
+(require 'doom_modeline_settings)
+(setq x-alt-keysym 'meta)
+
+(workgroups-mode 1)
+
+(require 'lsp_settings)
+
+
+(use-package python-mode
+  :ensure t
+  :hook (python-mode . lsp-deferred)
+  :custom
+  ;; NOTE: Set these if Python 3 is called "python3" on your system!
+  ;; (python-shell-interpreter "python3")
+  ;; (dap-python-executable "python3")
+  (dap-python-debugger 'debugpy)
+  :config
+  (require 'dap-python))
+
+
+(use-package pyvenv
+  :ensure t
+  :after python-mode
+  :config
+  (pyvenv-mode 1))
+
 ;; init.el ends here

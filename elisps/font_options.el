@@ -8,7 +8,7 @@
 ;; Version:
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 88
+;;     Update #: 92
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -32,7 +32,7 @@
 ;;       :weight 'normal))))
 
 (set-frame-font "DejaVu Sans Mono" nil t)
-(set-face-attribute 'default nil :height 380)
+(set-face-attribute 'default nil :height 320)
 ;; (set-frame-font "font-name:pixelsize=24")
 
 (provide 'font_options)

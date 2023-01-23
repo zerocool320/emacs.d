@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:52:50 2016 (-0400)
 ;; Version:
-;; Last-Updated: Wed Dec 28 14:16:45 2022 (-0600)
+;; Last-Updated: Sun Jan 22 18:13:33 2023 (-0600)
 ;;           By: a0232371
-;;     Update #: 96
+;;     Update #: 102
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -52,6 +52,7 @@
   ;; (load-theme 'doom-dracula t)
   ;; (load-theme 'doom-spacegrey t)
   (load-theme 'doom-zenburn t)
+  ;; (load-theme 'doom-palenight t)
 
   ;; Enable flashing mode-line on errors
   ;; (doom-themes-visual-bell-config)

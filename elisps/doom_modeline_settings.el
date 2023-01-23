@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Mon May 18 11:52:47 2020 (-0500)
 ;; Version:
-;; Last-Updated: Wed Dec 29 11:32:43 2021 (-0600)
-;;           By: Barath Ramesh
-;;     Update #: 13
+;; Last-Updated: Sun Jan 22 00:08:12 2023 (-0600)
+;;           By: a0232371
+;;     Update #: 18
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -65,6 +65,7 @@
   ;; Whether display icons in the mode-line. Respects `all-the-icons-color-icons'.
   ;; While using the server mode in GUI, should set the value explicitly.
   (setq doom-modeline-icon (display-graphic-p))
+  (setq doom-modeline-icon t)
 
   ;; Whether display the icon for `major-mode'. Respects `doom-modeline-icon'.
   (setq doom-modeline-major-mode-icon t)
@@ -175,7 +176,10 @@
   ;; built-in `project' on 26+
   (setq doom-modeline-project-detection 'project)
   ;; or `find-in-project' if it's installed
-  (setq doom-modeline-project-detection 'ffip))
+
+  (setq doom-modeline-project-detection 'ffip)
+  (defvar doom-modeline-icon (display-graphic-p))
+  )
 
 (provide 'doom_modeline_settings)
 

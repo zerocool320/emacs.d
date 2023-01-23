@@ -6,9 +6,9 @@
 ;; Maintainer:
 ;; Created: Sat Jun 11 18:48:31 2016 (-0400)
 ;; Version:
-;; Last-Updated: Sat Oct 17 17:36:25 2020 (-0500)
-;;           By: Barath Ramesh
-;;     Update #: 11
+;; Last-Updated: Sun Jan 22 00:18:25 2023 (-0600)
+;;           By: a0232371
+;;     Update #: 12
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -26,7 +26,7 @@
 (global-set-key "\C-cF" 'rgrep)
 (global-set-key "\C-cf" 'grep)
 (global-set-key [f4] 'rename-buffer)
-(global-set-key [f3] 'multi-term)
+(global-set-key [f3] 'multi-vterm)
 ;;(global-set-key "\C-cm" 'compile)
 (global-set-key "\C-cb" 'comment-box)
 ;; (global-set-key (kbd "C-s") 'swiper)
