@@ -7,7 +7,8 @@
   :commands (lsp lsp-deferred)
   :hook
   (lsp-mode . efs/lsp-mode-setup)
-  (prog-mode . lspe)
+  (prog-mode . lsp-deferred)
+  (cmake-mode . lsp-deferred)
   :init
   (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
   :config
@@ -17,11 +18,11 @@
   (setq lsp-warn-no-matched-clients nil)
   (custom-set-faces
    ;; If there is more than one, they won't work right.
- '(lsp-face-highlight-read ((t (:weight thin :background nil :foreground "PaleGreen3"))))
- ;; '(lsp-face-highlight-textual ((t (:foreground "sky blue" :weight semi-light :background nil))))
- '(lsp-face-highlight-textual ((t (:weight thin :background nil :foreground "CadetBlue"))))
- '(lsp-face-highlight-write ((t (:weight thin :background nil :foreground "LightSalmon2"))))
- '(lsp-ui-doc-background ((t (:background "black"))))))
+   '(lsp-face-highlight-read ((t (:weight thin :background nil :foreground "PaleGreen3"))))
+   ;; '(lsp-face-highlight-textual ((t (:foreground "sky blue" :weight semi-light :background nil))))
+   '(lsp-face-highlight-textual ((t (:weight thin :background nil :foreground "CadetBlue"))))
+   '(lsp-face-highlight-write ((t (:weight thin :background nil :foreground "LightSalmon2"))))
+   '(lsp-ui-doc-background ((t (:background "black"))))))
 
 
 (use-package lsp-ui

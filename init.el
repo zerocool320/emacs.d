@@ -200,16 +200,6 @@
                         (y-or-n-p "Really quit? ")))))
 
 
-;; (use-package recentf
-;;   :config
-;;   (setq recentf-save-file (expand-file-name "recentf" ramesh-savefile-dir)
-;;         recentf-max-saved-items 500
-;;         recentf-max-menu-items 15
-;;         ;; disable recentf-cleanup on Emacs start, because it can cause
-;;         ;; problems with remote files
-;;         recentf-auto-cleanup 'never)
-;;   (recentf-mode +1))
-
 (use-package windmove
   :config
   ;; use shift + arrow keys to switch between visible buffers
@@ -465,3 +455,83 @@
 (require 'polymode_settings)
 (require 'lsp_settings)
 (require 'crux_settings)
+
+
+(defconst ramesh-savefile-dir (expand-file-name "savefile" user-emacs-directory))
+
+;; create the savefile dir if it doesn't exist
+(unless (file-exists-p ramesh-savefile-dir)
+  (make-directory ramesh-savefile-dir))
+
+;; saveplace remembers your location in a file when saving files
+(use-package saveplace
+  :config
+  (setq save-place-file (expand-file-name "saveplace" ramesh-savefile-dir))
+  ;; activate it for all buffers
+  (setq-default save-place t))
+
+(use-package savehist
+  :config
+  (setq savehist-additional-variables
+        ;; search entries
+        '(search-ring regexp-search-ring)
+        ;; save every minute
+        savehist-autosave-interval 60
+        ;; keep the home clean
+        savehist-file (expand-file-name "savehist" ramesh-savefile-dir))
+  (savehist-mode +1))
+
+(use-package recentf
+  :config
+  (setq recentf-save-file (expand-file-name "recentf" ramesh-savefile-dir)
+        recentf-max-saved-items 500
+        recentf-max-menu-items 15
+        ;; disable recentf-cleanup on Emacs start, because it can cause
+        ;; problems with remote files
+        recentf-auto-cleanup 'never)
+  (recentf-mode t))
+
+(desktop-save-mode 1)
+
+
+
+(use-package cmake-mode
+  :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'")
+  :hook (cmake-mode . lsp-deferred))
+
+(use-package cmake-font-lock
+  :ensure t
+  :after cmake-mode
+  :config (cmake-font-lock-activate))
+
+;; (require 'ansi-color)
+;; (defun endless/colorize-compilation ()
+;;   "Colorize from `compilation-filter-start' to `point'."
+;;   (let ((inhibit-read-only t))
+;;     (ansi-color-apply-on-region
+;;      compilation-filter-start (point))))
+
+;; (add-hook 'compilation-filter-hook
+;;           #'endless/colorize-compilation)
+
+(use-package ansi-color
+  :config (progn
+            (defun my/ansi-colorize-buffer ()
+              (let ((buffer-read-only nil))
+                (ansi-color-apply-on-region (point-min) (point-max))))
+            (add-hook 'compilation-filter-hook 'my/ansi-colorize-buffer)))
+
+
+(use-package ansi-color
+  :hook (compilation-filter . ansi-color-compilation-filter))
+
+(use-package docstr
+  :config
+  (add-hook 'prog-mode-hook (lambda () (docstr-mode 1)))
+  (add-hook 'docstr-before-insert-hook (lambda (search-string) (insert "@brief ")))
+  (defun my-typescript-mode-hook ()
+    (add-hook 'docstr-before-insert-hook
+              (lambda (search-string) (insert "@brief "))
+              nil t))
+
+  (add-hook 'typescript-mode-hook #'my-typescript-mode-hook))
